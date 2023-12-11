@@ -18,6 +18,8 @@ async function getPlaylists(value) {
     }
 
     const data = await response.json();
+    generateCardList(data);
+
     console.log("Lista di playlist:", data);
   } catch (error) {
     console.error("Si è verificato un errore:", error.message);
@@ -39,26 +41,35 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const createCard = () => {
-  const card = document.getElementById("ascoltatiRecente");
+const generateCardList = (arrayObj) => {
+  const cardContainer = document.getElementById("ascoltatiRecente");
+  cardContainer.innerHTML = "";
+  for (let i = 0; i < 6; i++) {
+    let card = createCard(arrayObj.data[i]);
+    cardContainer.appendChild(card);
+  }
+};
+
+const createCard = (obj) => {
+  const card = document.createElement("div");
+  card.className = "col-4";
   card.innerHTML = `
-  <div class="col-4">
   <div class="card mb-3" style="max-width: 400px">
     <div class="row g-0">
       <div class="col-md-4">
         <img
-          src=""
+          src="${obj.album.cover}"
           class="img-fluid rounded-start"
           alt="..."
         />
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title">${obj.album.title}</h5>
         </div>
       </div>
     </div>
   </div>
-</div>
     `;
+  return card;
 };
