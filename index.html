@@ -12,7 +12,7 @@
     <main>
       <div class="container-fluid vh-100">
         <div class="row vh-100">
-          <div id="sidebar" class="col-md-4 vh-100">
+          <div id="sidebar" class="col-md-2 vh-100">
             <div id="menuSpotify" class="row bg-secondary">
               <div class="col-12">
                 <div id="logo" class="">
@@ -28,7 +28,11 @@
               <div class="col-12">
                 <div id="cerca" class="">
                   <img src="./assets/imgs/search.svg" class="my-1 ms-1" width="30px" />
-                  <span>Cerca</span>
+                  <div class="mb-3">
+                    <label for="searchBar" class="form-label"></label>
+                    <input type="text" class="form-control" id="searchBar" aria-describedby="searchBar" />
+                    <div id="labelSearch" class="form-text"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -58,7 +62,7 @@
             </div>
             <div id="album-che-ti-piacciono" class="row">
               <div class="col-12">
-                <div class="">Buon Pomeriggio</div>
+                <div id="ascoltatiRecente" class="row"></div>
               </div>
               <div class="col-12">
                 <div class="">primi 3 album</div>
@@ -105,6 +109,7 @@
               </div>
             </div>
           </div>
+          <div id="aside" class="col-2"></div>
         </div>
         <div class="row">
           <div class="col-12">
