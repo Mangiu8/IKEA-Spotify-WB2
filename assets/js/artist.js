@@ -1,9 +1,11 @@
 import { apiKey } from "./apiKey.js";
 
-// Funzione per ottenere la lista di playlist
-async function getPlaylists(value, container, cardType) {
-  const apiUrl = "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + value;
+const parameters = new URLSearchParams(window.location.search);
+const idAlbum = parameters.get("idAlbum");
+const apiUrl = "https://www.deezer.com/album/" + idAlbum;
 
+// Funzione per ottenere la lista di playlist
+async function getArtist() {
   try {
     const response = await fetch(apiUrl, {
       method: "GET",
@@ -18,7 +20,7 @@ async function getPlaylists(value, container, cardType) {
     }
 
     const data = await response.json();
-    generateCardList(data, container, cardType);
+    generateCardList(data);
 
     console.log("Lista di playlist:", data);
   } catch (error) {
@@ -27,30 +29,14 @@ async function getPlaylists(value, container, cardType) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  const searchBar = document.getElementById("searchBar");
-  let timer;
-
-  /*   searchBar.addEventListener("input", () => {
-    const valueSearched = searchBar.value;
-
-    clearTimeout(timer);
-
-    timer = setTimeout(() => {
-      getPlaylists(valueSearched, "buonPomeriggio", "small");
-    }, 1000);
-  }); */
-  getPlaylists("power wolf", "buonPomeriggio", "small");
-  getPlaylists("linkin park", "ascoltatiDiRecente", "large");
-  getPlaylists("Saboton", "iTuoiMix", "large");
-  getPlaylists("woodkid", "popolare", "large");
-  getPlaylists("drake", "tendenze", "large");
+  getArtist();
 });
 
-const generateCardList = (arrayObj, container, cardType) => {
+const generateCardList = (obj) => {
   const cardContainer = document.getElementById(container);
   cardContainer.innerHTML = "";
   for (let i = 0; i < 6; i++) {
-    let card = createCard(arrayObj.data[i], cardType);
+    let card = createCard(obj.data[i], cardType);
     cardContainer.appendChild(card);
   }
 };
@@ -89,7 +75,7 @@ const createCard = (obj, cardType) => {
     </div>
     <div class="card-body fix-h-100 ">
       <h6 class="card-title overflowCustom max-h-50 fs-7"><a href="./album.html?idAlbum=${obj.album.id}">${obj.album.title}</a></h6>
-      <p class="card-text fs-8"><a href="./artist.html?idArtist=${obj.artist.id}&idAlbum=${obj.album.id}">${obj.artist.name}</a></p>
+      <p class="card-text fs-8"><a href="./artist.html?idArtist=${obj.artist.id}">${obj.artist.name}</a></p>
     </div>
   </div>`;
     return card;
