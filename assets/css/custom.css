@@ -15,3 +15,135 @@ a {
   bottom: 1.2rem;
   right: 1.2rem;
 }
+.h-playBar {
+  height: 10px;
+}
+
+li {
+  list-style: none;
+}
+
+.navAnchor {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+.navAnchor:hover {
+  color: white;
+  font-weight: 700;
+}
+
+.plus {
+  background-color: white;
+  padding-block: 2px;
+  padding-inline: 6px;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+.heart {
+  background: rgb(46, 12, 149);
+  background: linear-gradient(139deg, rgb(46, 12, 149) 37%, rgb(255, 255, 255) 100%);
+  padding-block: 2px;
+  padding-inline: 6px;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+.label {
+  background-color: #004537;
+  padding-block: 2px;
+  padding-inline: 6px;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+.cont-1 {
+  height: 60vh;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.friends div img {
+  width: 40px;
+  border-radius: 50%;
+}
+
+.button {
+  color: white;
+}
+.button:hover {
+  color: #08fc1e;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.gradient-spotify {
+  background: rgb(2, 0, 36);
+  background: -moz-linear-gradient(
+    180deg,
+    rgb(2, 0, 36) 0%,
+    rgb(0, 0, 0) 0%,
+    rgb(237, 57, 212) 0%,
+    rgb(13, 110, 253) 0%,
+    rgb(111, 106, 106) 0%,
+    rgb(0, 0, 0) 100%
+  );
+  background: -webkit-linear-gradient(
+    180deg,
+    rgb(2, 0, 36) 0%,
+    rgb(0, 0, 0) 0%,
+    rgb(237, 57, 212) 0%,
+    rgb(13, 110, 253) 0%,
+    rgb(111, 106, 106) 0%,
+    rgb(0, 0, 0) 100%
+  );
+  background: linear-gradient(
+    180deg,
+    rgb(2, 0, 36) 0%,
+    rgb(0, 0, 0) 0%,
+    rgb(237, 57, 212) 0%,
+    rgb(13, 110, 253) 0%,
+    rgb(111, 106, 106) 0%,
+    rgb(0, 0, 0) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#000000",GradientType=1);
+}
+
+.w-60 {
+  width: 60% !important;
+}
+
+.start-60 {
+  left: 60% !important;
+}
+
+.bg-button {
+  background-color: #1e1e1e;
+}
+
+.mb-6 {
+  margin-bottom: 4rem !important;
+}
+
+.secondary-light {
+  background-color: rgb(201, 191, 191);
+} /*# sourceMappingURL=style.css.map */

@@ -30,18 +30,19 @@ window.addEventListener("DOMContentLoaded", () => {
   const searchBar = document.getElementById("searchBar");
   let timer;
 
-  searchBar.addEventListener("input", () => {
+  /*   searchBar.addEventListener("input", () => {
     const valueSearched = searchBar.value;
 
     clearTimeout(timer);
 
     timer = setTimeout(() => {
-      getPlaylists(valueSearched, "ascoltatiRecente", "small");
+      getPlaylists(valueSearched, "buonPomeriggio", "small");
     }, 1000);
-  });
-  getPlaylists("linkin park", "firstAlbum", "large");
-  getPlaylists("Saboton", "secondAlbum", "large");
-  getPlaylists("woodkid", "popolare-tra-chi-ascolta", "large");
+  }); */
+  getPlaylists("power wolf", "buonPomeriggio", "small");
+  getPlaylists("linkin park", "ascoltatiDiRecente", "large");
+  getPlaylists("Saboton", "iTuoiMix", "large");
+  getPlaylists("woodkid", "popolare", "large");
   getPlaylists("drake", "tendenze", "large");
 });
 
