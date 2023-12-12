@@ -88,8 +88,8 @@ const createCard = (obj, cardType) => {
     <i class="bi bi-play-circle-fill position-absolute positionCustom fs-1"></i>
     </div>
     <div class="card-body fix-h-100 ">
-      <h6 class="card-title overflowCustom max-h-50 fs-7"><a href="./album.html?idAlbum=${obj.album.id}">${obj.album.title}</a></h6>
-      <p class="card-text fs-8"><a href="./artist.html?idAlbum=${obj.album.id}">${obj.artist.name}</a></p>
+      <h6 class="card-title overflowCustom max-h-50 fs-6"><a class="customColorA" href="./album.html?idAlbum=${obj.album.id}">${obj.album.title}</a></h6>
+      <p class="card-text fs-8"><a class="customColorA" href="./artist.html?idArtist=${obj.artist.id}&idAlbum=${obj.album.id}">${obj.artist.name}</a></p>
     </div>
   </div>`;
     return card;

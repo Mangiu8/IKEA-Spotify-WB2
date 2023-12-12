@@ -147,3 +147,11 @@ li {
 .secondary-light {
   background-color: rgb(201, 191, 191);
 } /*# sourceMappingURL=style.css.map */
+
+.customColorA {
+  color: #aeaaaa;
+}
+.customColorA:hover {
+  color: #939292;
+  text-decoration: underline;
+}
