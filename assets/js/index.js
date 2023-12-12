@@ -79,15 +79,16 @@ const createCard = (obj, cardType) => {
     return card;
   } else if (cardType == "large") {
     const card = document.createElement("div");
-    card.className = "col-2";
+    card.className = "col-2 pb-2";
     card.innerHTML = `
     <div class="card">
-    <div class="d-flex justify-content-center align-item-center">
+    <div class="d-flex justify-content-center align-item-center position-relative">
     <img src="${obj.album.cover}" class="card-img-top max-h-180 max-w-180 object-fit-cover mt-2 rounded" alt="...">
+    <i class="bi bi-play-circle-fill position-absolute positionCustom fs-1"></i>
     </div>
-    <div class="card-body fix-h-100 overflowCustom">
-      <h5 class="card-title fs-5">${obj.album.title}</h5>
-      <p class="card-text fs-8">${obj.artist.name}</p>
+    <div class="card-body fix-h-100 ">
+      <h6 class="card-title overflowCustom max-h-50 fs-7">${obj.album.title}</h6>
+      <p class="card-text fs-8"><a href="#">${obj.artist.name}</a></p>
     </div>
   </div>`;
     return card;

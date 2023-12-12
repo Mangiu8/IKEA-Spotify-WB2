@@ -9,5 +9,9 @@ a {
 .overflowCustom {
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: normal;
+}
+.positionCustom {
+  bottom: 1.2rem;
+  right: 1.2rem;
 }
