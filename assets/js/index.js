@@ -68,6 +68,8 @@ const createCard = (obj, cardType) => {
           class="img-fluid fix-h-80 fix-w-80 rounded-start"
           alt="..."
         />
+    <i class="bi bi-play-circle-fill position-absolute positionCustom fs-1"></i>
+
       </div>
       <div class="col-10">
         <div class="card-body">
