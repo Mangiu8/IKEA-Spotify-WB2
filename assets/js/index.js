@@ -85,7 +85,7 @@ const createCard = (obj, cardType) => {
     <div class="d-flex justify-content-center align-item-center">
     <img src="${obj.album.cover}" class="card-img-top max-h-180 max-w-180 object-fit-cover mt-2 rounded" alt="...">
     </div>
-    <div class="card-body fix-h-100 overflow-hidden">
+    <div class="card-body fix-h-100 overflowCustom">
       <h5 class="card-title fs-5">${obj.album.title}</h5>
       <p class="card-text fs-8">${obj.artist.name}</p>
     </div>

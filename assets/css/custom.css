@@ -6,3 +6,8 @@ a {
   line-height: 1;
   font-size: 0.8rem;
 }
+.overflowCustom {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
