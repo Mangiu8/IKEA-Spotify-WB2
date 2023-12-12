@@ -15,3 +15,7 @@ a {
   bottom: 1.2rem;
   right: 1.2rem;
 }
+#imgBackgruound {
+  background-image: url("https://e-cdns-images.dzcdn.net/images/artist/5d2fa7f140a6bdc2c864c3465a61fc71/1000x1000-000000-80-0-0.jpg");
+  background-size: cover;
+}
