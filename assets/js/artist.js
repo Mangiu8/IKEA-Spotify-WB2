@@ -20,8 +20,8 @@ async function getArtist() {
     }
 
     const data = await response.json();
-    //generateCardList(data);
     console.log("Lista di playlist:", data);
+    generateCardList(data);
     showArtist(data);
   } catch (error) {
     console.error("Si è verificato un errore:", error.message);
@@ -31,6 +31,8 @@ async function getArtist() {
 const showArtist = (data) => {
   const titolo = document.getElementById("nomeArtista");
   const banner = document.getElementById("sfondoArtista");
+  const fans = document.getElementById("fans");
+  fans.innerHTML = `Ascoltatori mensili ${data.fans}`;
   banner.style.backgroundImage = "url(" + data.artist.picture_xl + ")";
   titolo.innerText = data.artist.name;
 };
@@ -40,17 +42,49 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 const generateCardList = (obj) => {
-  const cardContainer = document.getElementById(container);
+  const cardContainer = document.getElementById("Salvatore");
+  const tracks = obj.tracks.data;
   cardContainer.innerHTML = "";
-  for (let i = 0; i < 6; i++) {
-    let card = createCard(obj);
+  console.log(tracks);
+  for (let i = 0; i < tracks.length; i++) {
+    let card = createCard(tracks[i], i + 1);
     cardContainer.appendChild(card);
+    console.log(tracks[i]);
   }
 };
 
-const createCard = (obj) => {
+const createCard = (obj, index) => {
+  console.log(obj);
   const card = document.createElement("div");
-  card.className = "col-4";
-  // card.innerHTML = ;
+  card.className = "row";
+  card.innerHTML = ` 
+  <div class="col-8 text-light my-2">
+  <div class="d-flex gap-2 align-items-center">
+    <p class="mx-1">${index}</p>
+    <img
+      aria-hidden="false"
+      draggable="false"
+      loading="eager"
+      src="${obj.album.cover_small}"
+      alt=""
+      class="mMx2LUixlnN_Fu45JpFB rkw8BWQi3miXqtlJhKg0 Yn2Ei5QZn19gria6LjZj"
+      width="40"
+      height="40"
+      style="border-radius: 4px"
+    />
+    <p>${obj.title}</p>
+  </div>
+</div>
+<div class="col-2 text-light">
+  <div>
+    <p>${obj.rank}</p>
+  </div>
+</div>
+<div class="col-2 text-light">
+  <div>
+    <p>${obj.duration}</p>
+  </div>
+</div>
+`;
   return card;
 };
