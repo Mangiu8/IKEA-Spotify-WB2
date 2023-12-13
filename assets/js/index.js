@@ -59,41 +59,150 @@ const createCard = (obj, cardType) => {
   if (cardType == "small") {
     const card = document.createElement("div");
     card.className = "col-4";
-    card.innerHTML = `
-  <div class="card mb-3 customCard">
-    <div class="row g-0">
-      <div class="col-2">
-        <img
-          src="${obj.album.cover}"
-          class="img-fluid fix-h-80 fix-w-80 rounded-start"
-          alt="..."
-        />
-        <img src="./assets/imgs/play-fill.svg"  class="position-absolute positionCustom">
 
-      </div>
-      <div class="col-10">
-        <div class="card-body">
-          <h6 class="card-title m-0">${obj.album.title}</h6>
-        </div>
-      </div>
-    </div>
-  </div>
-    `;
+    const innerDiv1 = document.createElement("div");
+    innerDiv1.className = "card mb-3 customCard";
+
+    const innerDiv2 = document.createElement("div");
+    innerDiv2.className = "row g-0";
+
+    const imgDiv = document.createElement("div");
+    imgDiv.className = "col-2";
+
+    const img = document.createElement("img");
+    img.src = obj.album.cover;
+    img.className = "img-fluid fix-h-80 fix-w-80 rounded-start";
+    img.alt = "...";
+
+    const playImg = document.createElement("img");
+    playImg.src = "./assets/imgs/play-fill.svg";
+    playImg.className = "position-absolute positionCustom";
+
+    playImg.addEventListener("click", () => {
+      refreshPlayer(obj);
+    });
+
+    const textDiv = document.createElement("div");
+    textDiv.className = "col-10";
+
+    const cardBody = document.createElement("div");
+    cardBody.className = "card-body";
+
+    const cardTitle = document.createElement("h6");
+    cardTitle.className = "card-title m-0";
+    cardTitle.textContent = obj.album.title;
+
+    // Assemble the nodes
+    imgDiv.appendChild(img);
+    imgDiv.appendChild(playImg);
+
+    textDiv.appendChild(cardBody);
+    cardBody.appendChild(cardTitle);
+
+    innerDiv2.appendChild(imgDiv);
+    innerDiv2.appendChild(textDiv);
+
+    innerDiv1.appendChild(innerDiv2);
+
+    card.appendChild(innerDiv1);
+
     return card;
   } else if (cardType == "large") {
+    // Create the outer div
     const card = document.createElement("div");
     card.className = "col-2 pb-2";
-    card.innerHTML = `
-    <div class="card customCard">
-    <div class="d-flex justify-content-center align-item-center position-relative">
-    <img src="${obj.album.cover}" class="card-img-top max-h-180 max-w-180 object-fit-cover mx-2 mt-2 rounded" alt="...">
-    <img src="./assets/imgs/play-fill.svg"  class="position-absolute positionCustom">
-    </div>
-    <div class="card-body fix-h-100 ">
-      <h6 class="card-title overflowCustom max-h-50 fs-6"><a class="customColorA" href="./album.html?idAlbum=${obj.album.id}">${obj.album.title}</a></h6>
-      <p class="card-text fs-8"><a class="customColorA" href="./artist.html?idArtist=${obj.artist.name}&idAlbum=${obj.album.id}">${obj.artist.name}</a></p>
-    </div>
-  </div>`;
+
+    // Create the inner card div
+    const innerCard = document.createElement("div");
+    innerCard.className = "card customCard";
+
+    // Create the d-flex container div
+    const dFlexContainer = document.createElement("div");
+    dFlexContainer.className = "d-flex justify-content-center align-item-center position-relative";
+
+    // Create the album cover image
+    const imgAlbumCover = document.createElement("img");
+    imgAlbumCover.src = obj.album.cover;
+    imgAlbumCover.className = "card-img-top max-h-180 max-w-180 object-fit-cover mx-2 mt-2 rounded";
+    imgAlbumCover.alt = "...";
+
+    // Create the play icon image
+    const playImg = document.createElement("img");
+    playImg.src = "./assets/imgs/play-fill.svg";
+    playImg.className = "position-absolute positionCustom";
+    playImg.addEventListener("click", () => {
+      refreshPlayer(obj);
+    });
+
+    // Append album cover and play icon to the d-flex container
+    dFlexContainer.appendChild(imgAlbumCover);
+    dFlexContainer.appendChild(playImg);
+
+    // Create the card body div
+    const cardBody = document.createElement("div");
+    cardBody.className = "card-body fix-h-100";
+
+    // Create the card title h6 element
+    const cardTitle = document.createElement("h6");
+    cardTitle.className = "card-title overflowCustom max-h-50 fs-6";
+
+    // Create the album title link
+    const titleLink = document.createElement("a");
+    titleLink.href = `./album.html?idAlbum=${obj.album.id}`;
+    titleLink.className = "customColorA";
+    titleLink.textContent = obj.album.title;
+
+    // Append album title link to the card title
+    cardTitle.appendChild(titleLink);
+
+    // Create the card text p element
+    const cardText = document.createElement("p");
+    cardText.className = "card-text fs-8";
+
+    // Create the artist name link
+    const artistLink = document.createElement("a");
+    artistLink.href = `./artist.html?idArtist=${obj.artist.name}&idAlbum=${obj.album.id}`;
+    artistLink.className = "customColorA";
+    artistLink.textContent = obj.artist.name;
+
+    // Append artist name link to the card text
+    cardText.appendChild(artistLink);
+
+    // Append card title and card text to the card body
+    cardBody.appendChild(cardTitle);
+    cardBody.appendChild(cardText);
+
+    // Append d-flex container and card body to the inner card
+    innerCard.appendChild(dFlexContainer);
+    innerCard.appendChild(cardBody);
+
+    // Append inner card to the outer card
+    card.appendChild(innerCard);
+
+    // Return the final card DOM node
     return card;
   }
 };
+
+function refreshPlayer(obj) {
+  // Assuming you have an existing parent element with the id "audioPlayer"
+  const audioPlayerContainer = document.getElementById("audioPlayer");
+  audioPlayerContainer.innerHTML = "";
+
+  // Create an audio element
+  const audioElement = document.createElement("audio");
+  audioElement.controls = true;
+  audioElement.autoplay = true;
+  audioElement.volume = 0.5;
+
+  // Create a source element
+  const sourceElement = document.createElement("source");
+  sourceElement.src = obj.preview;
+  sourceElement.type = "audio/mpeg";
+
+  // Append source element to audio element
+  audioElement.appendChild(sourceElement);
+
+  // Append audio element to the container
+  audioPlayerContainer.appendChild(audioElement);
+}
