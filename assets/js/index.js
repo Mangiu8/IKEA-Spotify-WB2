@@ -25,20 +25,28 @@ async function getPlaylists(value, container, cardType) {
     console.error("Si è verificato un errore:", error.message);
   }
 }
-
+let searchBarIsActive = false;
 window.addEventListener("DOMContentLoaded", () => {
-  const searchBar = document.getElementById("searchBar");
+  let searchBarContainer = document.getElementById("searchBarContainer");
   let timer;
-
-  /*   searchBar.addEventListener("input", () => {
-    const valueSearched = searchBar.value;
-
+  const searchBar = document.getElementById("searchBar");
+  searchBar.addEventListener("input", () => {
+    let valueSearched = searchBar.value;
+    if (searchBar.value == "") {
+      getPlaylists("power wolf", "buonPomeriggio", "small");
+      return;
+    }
     clearTimeout(timer);
 
     timer = setTimeout(() => {
       getPlaylists(valueSearched, "buonPomeriggio", "small");
     }, 1000);
-  }); */
+  });
+  const searchButton = document.getElementById("searchButton");
+  searchButton.addEventListener("click", () => {
+    toggleSearchBar();
+  });
+
   getPlaylists("power wolf", "buonPomeriggio", "small");
   getPlaylists("linkin park", "ascoltatiDiRecente", "large");
   getPlaylists("Saboton", "iTuoiMix", "large");
@@ -90,7 +98,13 @@ const createCard = (obj, cardType) => {
 
     const cardTitle = document.createElement("h6");
     cardTitle.className = "card-title m-0 max-h-40   overflow-hidden";
-    cardTitle.textContent = obj.album.title;
+
+    const titleLink = document.createElement("a");
+    titleLink.href = `./album.html?idAlbum=${obj.album.id}`;
+    titleLink.className = "customColorA";
+    titleLink.textContent = obj.album.title;
+
+    cardTitle.appendChild(titleLink);
 
     imgDiv.appendChild(img);
     imgDiv.appendChild(playImg);
@@ -182,4 +196,14 @@ function refreshPlayer(obj) {
   audioElement.appendChild(sourceElement);
 
   audioPlayerContainer.appendChild(audioElement);
+}
+function toggleSearchBar() {
+  const searchBar = document.getElementById("searchBar");
+  searchBarIsActive = !searchBarIsActive;
+
+  if (searchBarIsActive) {
+    searchBar.classList.remove("d-none");
+  } else {
+    searchBar.classList.add("d-none");
+  }
 }

@@ -12,7 +12,7 @@
   <body data-bs-theme="dark" class="overflow-hidden">
     <main class="container-fluid mx-0">
       <div class="row">
-        <div class="col-auto d-inline-block d-lg-none bg-black">
+        <!-- <div class="col-auto d-inline-block d-lg-none bg-black">
           <a
             class="btn btn-dark bg-transparent border-0 mt-3"
             data-bs-toggle="offcanvas"
@@ -21,7 +21,7 @@
             aria-controls="offcanvasExample"
             ><i class="bi bi-three-dots-vertical"></i>
           </a>
-        </div>
+        </div> -->
 
         <!-- --------------------MENU CANVAS ---------------------------->
 
@@ -234,6 +234,13 @@
                     </div>
                   </button>
                 </div>
+                <div id="searchBarContainer">
+                  <div class="mb-3 row">
+                    <div class="col-auto">
+                      <input type="text" class="form-control d-none" id="searchBar" />
+                    </div>
+                  </div>
+                </div>
                 <div>
                   <select class="form-select rounded-pill" aria-label="Default select example">
                     <option class="d-none" selected>Antonio Marucci</option>
@@ -246,10 +253,10 @@
             </div>
           </div>
           <!-- hero -->
-          <div class="container rounded text-white bg-darkgray">
+          <div class="container rounded text-white hero-bg">
             <div class="row py-3">
               <!-- hero divisa in 3 parte 1: immagine -->
-              <div class="col-3">
+              <div class="col-auto">
                 <div class="container h-100 w-100 d-flex align-items-center">
                   <img src="./assets/imgs/main/image-1.jpg" alt="album foto" class="overflow-hidden" id="albumImg" />
                 </div>
@@ -268,17 +275,6 @@
                     ><button class="btn fw-bold btn-dark border-1 border-white rounded-pill px-4 mx-3">Salva</button>
                     <span><i class="bi bi-three-dots"></i></span>
                   </div>
-                </div>
-              </div>
-
-              <!-- hero divisa in 3 parte 2: testo per nascondere annuncio da implementare in js-->
-
-              <div class="col-3">
-                <div>
-                  <span
-                    class="badge rounded-pill small text-bg-secondary bg-opacity-25 text-uppercase text-white-50 w-100"
-                    >nascondi annunci</span
-                  >
                 </div>
               </div>
             </div>
@@ -310,7 +306,7 @@
           </div>
         </div>
 
-        <div class="col-auto d-inline-block d-lg-none bg-black">
+        <!-- <div class="col-auto d-inline-block d-lg-none bg-black">
           <a
             class="btn btn-dark bg-transparent border-0 mt-3"
             data-bs-toggle="offcanvas"
@@ -319,7 +315,7 @@
             aria-controls="offcanvas2"
             ><i class="bi bi-person"></i>
           </a>
-        </div>
+        </div> -->
         <!-- -----------------FRIENDLIST CANVAS -------------------------->
         <div
           class="offcanvas offcanvas-end bg-black text-bg-danger d-lg-none"

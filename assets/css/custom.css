@@ -195,4 +195,19 @@ li {
   background: #7f7fd5;
   background: -webkit-linear-gradient(to top, #91eae4, #86a8e7, #7f7fd5);
   background: linear-gradient(to top, #91eae4, #86a8e7, #7f7fd5);
+  background: rgb(172, 172, 111);
+  background: linear-gradient(
+    180deg,
+    rgba(172, 172, 111, 1) 0%,
+    rgba(113, 158, 72, 1) 16%,
+    rgba(57, 144, 35, 1) 31%,
+    rgba(41, 92, 33, 1) 50%,
+    rgba(30, 55, 31, 1) 69%,
+    rgba(13, 20, 16, 1) 86%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+.hero-bg {
+  background: rgb(31, 31, 31);
+  background: linear-gradient(185deg, rgba(31, 31, 31, 1) 0%, rgba(1, 1, 1, 1) 76%);
 }
