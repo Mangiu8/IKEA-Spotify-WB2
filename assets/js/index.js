@@ -83,13 +83,13 @@ const createCard = (obj, cardType) => {
     });
 
     const textDiv = document.createElement("div");
-    textDiv.className = "col";
+    textDiv.className = "col bg-darkgray rounded";
 
     const cardBody = document.createElement("div");
-    cardBody.className = "card-body";
+    cardBody.className = "card-body ";
 
     const cardTitle = document.createElement("h6");
-    cardTitle.className = "card-title m-0 max-h-40 overflow-hidden";
+    cardTitle.className = "card-title m-0 max-h-40   overflow-hidden";
     cardTitle.textContent = obj.album.title;
 
     imgDiv.appendChild(img);
@@ -108,10 +108,10 @@ const createCard = (obj, cardType) => {
     return card;
   } else if (cardType == "large") {
     const card = document.createElement("div");
-    card.className = "col-2 pb-2";
+    card.className = "col-2 pb-2 ";
 
     const innerCard = document.createElement("div");
-    innerCard.className = "card customCard";
+    innerCard.className = "card customCard bg-darkgray";
 
     const dFlexContainer = document.createElement("div");
     dFlexContainer.className = "d-flex justify-content-center align-item-center position-relative";
@@ -132,10 +132,10 @@ const createCard = (obj, cardType) => {
     dFlexContainer.appendChild(playImg);
 
     const cardBody = document.createElement("div");
-    cardBody.className = "card-body fix-h-100";
+    cardBody.className = "card-body  fix-h-100";
 
     const cardTitle = document.createElement("h6");
-    cardTitle.className = "card-title overflowCustom max-h-50 fs-6";
+    cardTitle.className = "card-title overflowCustom max-h-60 fs-6";
 
     const titleLink = document.createElement("a");
     titleLink.href = `./album.html?idAlbum=${obj.album.id}`;
