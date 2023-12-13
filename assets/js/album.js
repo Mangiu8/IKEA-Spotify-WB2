@@ -30,13 +30,15 @@ async function getArtist() {
 
 const showArtist = (data) => {
   const titolo = document.getElementById("nomeArtista");
-  const banner = document.getElementById("sfondoArtista");
-  const fans = document.getElementById("fans");
+  const cover = document.getElementById("cover");
+  const descriptionArtist = document.getElementById("descriptionArtist");
   console.log("cose");
   console.log(data);
-  fans.innerHTML = `Ascoltatori mensili ${data.fans}`;
-  banner.style.backgroundImage = "url(" + data.cover_xl + ")";
+  cover.innerHTML = `<img src="${data.cover_medium}">`;
   titolo.innerText = data.title;
+  descriptionArtist.innerHTML = `
+  <img src="${data.artist.picture_small}" class="rounded-pill" width="30px">
+  <span class="h6">${data.artist.name} ° ${data.release_date} ° ${data.nb_tracks}, ${data.duration} minuti</span>`;
 };
 
 window.addEventListener("DOMContentLoaded", () => {
