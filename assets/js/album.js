@@ -32,9 +32,11 @@ const showArtist = (data) => {
   const titolo = document.getElementById("nomeArtista");
   const banner = document.getElementById("sfondoArtista");
   const fans = document.getElementById("fans");
+  console.log("cose");
+  console.log(data);
   fans.innerHTML = `Ascoltatori mensili ${data.fans}`;
-  banner.style.backgroundImage = "url(" + data.artist.picture_xl + ")";
-  titolo.innerText = data.artist.name;
+  banner.style.backgroundImage = "url(" + data.cover_xl + ")";
+  titolo.innerText = data.title;
 };
 
 window.addEventListener("DOMContentLoaded", () => {
