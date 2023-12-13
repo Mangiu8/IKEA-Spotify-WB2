@@ -63,7 +63,7 @@ const createCard = (obj, index) => {
   card.className = "row";
 
   const col8 = document.createElement("div");
-  col8.className = "col-8 text-light my-2";
+  col8.className = "col text-light my-2";
 
   const flexContainer = document.createElement("div");
   flexContainer.className = "d-flex gap-2 align-items-center";
@@ -93,18 +93,20 @@ const createCard = (obj, index) => {
   col8.appendChild(flexContainer);
 
   const col2Rank = document.createElement("div");
-  col2Rank.className = "col-2 text-light";
+  col2Rank.className = "col-md-2 text-light";
 
   const rankParagraph = document.createElement("p");
   rankParagraph.textContent = obj.rank;
+  rankParagraph.className = "d-none d-md-block";
 
   col2Rank.appendChild(rankParagraph);
 
   const col2Duration = document.createElement("div");
-  col2Duration.className = "col-2 text-light";
+  col2Duration.className = "col-md-2 text-light";
 
   const durationParagraph = document.createElement("p");
   durationParagraph.textContent = obj.duration;
+  durationParagraph.className = "d-none d-md-block";
 
   col2Duration.appendChild(durationParagraph);
 
