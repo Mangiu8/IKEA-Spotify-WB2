@@ -67,11 +67,11 @@ const createCard = (obj, cardType) => {
     innerDiv2.className = "row g-0";
 
     const imgDiv = document.createElement("div");
-    imgDiv.className = "col-2";
+    imgDiv.className = "fix-h-80 fix-w-80";
 
     const img = document.createElement("img");
     img.src = obj.album.cover;
-    img.className = "img-fluid fix-h-80 fix-w-80 rounded-start";
+    img.className = "img-fluid rounded-start";
     img.alt = "...";
 
     const playImg = document.createElement("img");
@@ -83,7 +83,7 @@ const createCard = (obj, cardType) => {
     });
 
     const textDiv = document.createElement("div");
-    textDiv.className = "col-10";
+    textDiv.className = "col";
 
     const cardBody = document.createElement("div");
     cardBody.className = "card-body";
