@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="assets/css/circular-font.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" />
   </head>
-  <body>
+  <body data-bs-theme="dark" class="overflow-hidden">
     <section class="container-fluid m-auto">
       <div class="row">
         <div class="col-auto d-inline-block d-lg-none bg-black">
@@ -199,61 +199,52 @@
         <div class="col vh-100 overflow-y-auto">
           <div class="row">
             <!-- Background image -->
-            <div class="bg-image w-100 object-fit-lg-contain" id="sfondoArtista">
+            <div class="bg-image w-100 object-fit-lg-contain pb-4" id="sfondoArtista">
               <!-- Background image -->
-              <div class="d-flex flex-column">
-                <div class="d-flex m-3 align-items-center mb-6 flex-wrap">
-                  <div class="d-flex w-50 gap-3">
-                    <button class="btn">
-                      <div class="rounded-circle secondary-light d-flex p-1">
-                        <svg
-                          style="width: 20px"
-                          data-encore-id="icon"
-                          role="img"
-                          aria-hidden="true"
-                          class="Svg-sc-ytk21e-0 kgVuXA IYDlXmBmmUKHveMzIPCF"
-                          viewBox="0 0 16 16"
-                        >
-                          <path
-                            d="M11.03.47a.75.75 0 0 1 0 1.06L4.56 8l6.47 6.47a.75.75 0 1 1-1.06 1.06L2.44 8 9.97.47a.75.75 0 0 1 1.06 0z"
-                          ></path>
-                        </svg>
-                      </div>
-                    </button>
-                    <button class="btn">
-                      <div class="rounded-circle secondary-light d-flex p-1">
-                        <svg
-                          style="width: 20px"
-                          data-encore-id="icon"
-                          role="img"
-                          aria-hidden="true"
-                          class="Svg-sc-ytk21e-0 kgVuXA IYDlXmBmmUKHveMzIPCF"
-                          viewBox="0 0 16 16"
-                        >
-                          <path
-                            d="M4.97.47a.75.75 0 0 0 0 1.06L11.44 8l-6.47 6.47a.75.75 0 1 0 1.06 1.06L13.56 8 6.03.47a.75.75 0 0 0-1.06 0z"
-                          ></path>
-                        </svg>
-                      </div>
-                    </button>
-                  </div>
-                  <div class="ms-auto">
-                    <div class="btn-group dropstart">
-                      <button
-                        type="button"
-                        class="btn btn-outline-secondary dropdown-toggle"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        Nome Autore
+              <div id="hero" class="row sticky-top bg-transparent">
+                <div class="col-12">
+                  <div class="d-flex justify-content-between align-items-center mt-2 mb-2">
+                    <div>
+                      <button class="btn">
+                        <div class="rounded-circle secondary-light d-flex p-1">
+                          <svg
+                            style="width: 20px"
+                            data-encore-id="icon"
+                            role="img"
+                            aria-hidden="true"
+                            class="Svg-sc-ytk21e-0 kgVuXA IYDlXmBmmUKHveMzIPCF"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              d="M11.03.47a.75.75 0 0 1 0 1.06L4.56 8l6.47 6.47a.75.75 0 1 1-1.06 1.06L2.44 8 9.97.47a.75.75 0 0 1 1.06 0z"
+                            ></path>
+                          </svg>
+                        </div>
                       </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#">Separated link</a></li>
-                      </ul>
+                      <button class="btn">
+                        <div class="rounded-circle secondary-light d-flex p-1">
+                          <svg
+                            style="width: 20px"
+                            data-encore-id="icon"
+                            role="img"
+                            aria-hidden="true"
+                            class="Svg-sc-ytk21e-0 kgVuXA IYDlXmBmmUKHveMzIPCF"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              d="M4.97.47a.75.75 0 0 0 0 1.06L11.44 8l-6.47 6.47a.75.75 0 1 0 1.06 1.06L13.56 8 6.03.47a.75.75 0 0 0-1.06 0z"
+                            ></path>
+                          </svg>
+                        </div>
+                      </button>
+                    </div>
+                    <div>
+                      <select class="form-select rounded-pill" aria-label="Default select example">
+                        <option class="d-none" selected>Antonio Marucci</option>
+                        <option value="1">Settings</option>
+                        <option value="2">Friends</option>
+                        <option value="3">Profile</option>
+                      </select>
                     </div>
                   </div>
                 </div>

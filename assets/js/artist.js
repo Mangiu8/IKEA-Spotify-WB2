@@ -72,7 +72,7 @@ const generateCardList = (obj) => {
   const tracks = obj.data;
   cardContainer.innerHTML = "";
   console.log(tracks);
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 7; i++) {
     let card = createCard(tracks[i], i + 1);
     cardContainer.appendChild(card);
     console.log(tracks[i]);
