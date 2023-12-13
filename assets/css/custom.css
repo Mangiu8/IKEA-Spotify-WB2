@@ -169,9 +169,10 @@ li {
   width: 2.7rem;
   bottom: 0.8rem;
   right: 1rem;
+  padding-left: 0.2rem;
   cursor: pointer;
   background-color: #08fc1e;
-  border-radius: 50px;
+  border-radius: 100px;
   animation-name: rotate;
   animation-duration: 0.7s;
   animation-direction: inherit;
