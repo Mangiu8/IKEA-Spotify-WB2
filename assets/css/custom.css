@@ -11,10 +11,7 @@ a {
   text-overflow: ellipsis;
   white-space: normal;
 }
-.positionCustom {
-  bottom: 1.2rem;
-  right: 1.2rem;
-}
+
 .h-playBar {
   height: 10px;
 }
@@ -154,4 +151,45 @@ li {
 .customColorA:hover {
   color: #939292;
   text-decoration: underline;
+}
+
+/* PLAY BUTTON  */
+
+.positionCustom {
+  bottom: 0.6rem;
+  right: 1rem;
+}
+
+.positionCustom {
+  color: transparent;
+}
+
+.positionCustom:hover {
+  color: #1ed760;
+  cursor: pointer;
+}
+
+.positionCustom {
+  -webkit-animation: mover 1s infinite alternate;
+  animation: mover 1s infinite alternate;
+}
+.positionCustom {
+  -webkit-animation: mover 1s infinite alternate;
+  animation: mover 1s infinite alternate;
+}
+@-webkit-keyframes mover {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes mover {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
 }
