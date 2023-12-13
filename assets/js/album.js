@@ -69,7 +69,7 @@ const createCard = (obj, index) => {
   flexContainer.className = "d-flex gap-2 align-items-center";
 
   const indexParagraph = document.createElement("p");
-  indexParagraph.className = "mx-1";
+  indexParagraph.style.minWidth = "25px";
   indexParagraph.textContent = index;
 
   const img = document.createElement("img");
