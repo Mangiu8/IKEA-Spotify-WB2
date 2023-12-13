@@ -60,7 +60,7 @@ const createCard = (obj, cardType) => {
     const card = document.createElement("div");
     card.className = "col-4";
     card.innerHTML = `
-  <div class="card mb-3">
+  <div class="card mb-3 customCard">
     <div class="row g-0">
       <div class="col-2">
         <img
@@ -68,7 +68,7 @@ const createCard = (obj, cardType) => {
           class="img-fluid fix-h-80 fix-w-80 rounded-start"
           alt="..."
         />
-    <i class="bi bi-play-circle-fill position-absolute positionCustom fs-1"></i>
+        <img src="./assets/imgs/play-fill.svg"  class="position-absolute positionCustom">
 
       </div>
       <div class="col-10">
