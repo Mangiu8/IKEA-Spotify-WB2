@@ -83,34 +83,56 @@ const createCard = (obj, index) => {
   console.log(obj);
   const card = document.createElement("div");
   card.className = "row";
-  card.innerHTML = ` 
-  <div class="col-8 text-light my-2">
-  <div class="d-flex gap-2 align-items-center">
-    <p class="mx-1">${index}</p>
-    <img
-      aria-hidden="false"
-      draggable="false"
-      loading="eager"
-      src="${obj.album.cover_small}"
-      alt=""
-      class="mMx2LUixlnN_Fu45JpFB rkw8BWQi3miXqtlJhKg0 Yn2Ei5QZn19gria6LjZj"
-      width="40"
-      height="40"
-      style="border-radius: 4px"
-    />
-    <p>${obj.title}</p>
-  </div>
-</div>
-<div class="col-2 text-light">
-  <div>
-    <p>${obj.rank}</p>
-  </div>
-</div>
-<div class="col-2 text-light">
-  <div>
-    <p>${obj.duration}</p>
-  </div>
-</div>
-`;
+
+  const col8 = document.createElement("div");
+  col8.className = "col-8 text-light my-2";
+
+  const flexContainer = document.createElement("div");
+  flexContainer.className = "d-flex gap-2 align-items-center";
+
+  const indexParagraph = document.createElement("p");
+  indexParagraph.className = "mx-1";
+  indexParagraph.textContent = index;
+
+  const img = document.createElement("img");
+  img.setAttribute("aria-hidden", "false");
+  img.setAttribute("draggable", "false");
+  img.setAttribute("loading", "eager");
+  img.src = obj.album.cover_small;
+  img.alt = "";
+  img.className = "mMx2LUixlnN_Fu45JpFB rkw8BWQi3miXqtlJhKg0 Yn2Ei5QZn19gria6LjZj";
+  img.width = "40";
+  img.height = "40";
+  img.style.borderRadius = "4px";
+
+  const titleParagraph = document.createElement("p");
+  titleParagraph.textContent = obj.title;
+
+  flexContainer.appendChild(indexParagraph);
+  flexContainer.appendChild(img);
+  flexContainer.appendChild(titleParagraph);
+
+  col8.appendChild(flexContainer);
+
+  const col2Rank = document.createElement("div");
+  col2Rank.className = "col-2 text-light";
+
+  const rankParagraph = document.createElement("p");
+  rankParagraph.textContent = obj.rank;
+
+  col2Rank.appendChild(rankParagraph);
+
+  const col2Duration = document.createElement("div");
+  col2Duration.className = "col-2 text-light";
+
+  const durationParagraph = document.createElement("p");
+  durationParagraph.textContent = obj.duration;
+
+  col2Duration.appendChild(durationParagraph);
+
+  card.appendChild(col8);
+  card.appendChild(col2Rank);
+  card.appendChild(col2Duration);
+
   return card;
 };
