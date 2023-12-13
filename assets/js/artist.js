@@ -21,12 +21,19 @@ async function getArtist() {
 
     const data = await response.json();
     //generateCardList(data);
-
     console.log("Lista di playlist:", data);
+    showArtist(data);
   } catch (error) {
     console.error("Si è verificato un errore:", error.message);
   }
 }
+
+const showArtist = (data) => {
+  const titolo = document.getElementById("nomeArtista");
+  const banner = document.getElementById("sfondoArtista");
+  banner.style.backgroundImage = "url(" + data.artist.picture_xl + ")";
+  titolo.innerText = data.artist.name;
+};
 
 window.addEventListener("DOMContentLoaded", () => {
   getArtist();
