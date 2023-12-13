@@ -161,35 +161,26 @@ li {
 }
 
 .positionCustom {
-  color: transparent;
+  display: none;
 }
 
-.positionCustom:hover {
-  color: #1ed760;
+.customCard:hover .positionCustom {
+  display: block;
+  width: 2.7rem;
+  bottom: 0.8rem;
+  right: 1rem;
   cursor: pointer;
+  background-color: #08fc1e;
+  border-radius: 50px;
+  animation-name: rotate;
+  animation-duration: 0.7s;
+  animation-direction: inherit;
 }
-
-.positionCustom {
-  -webkit-animation: mover 1s infinite alternate;
-  animation: mover 1s infinite alternate;
-}
-.positionCustom {
-  -webkit-animation: mover 1s infinite alternate;
-  animation: mover 1s infinite alternate;
-}
-@-webkit-keyframes mover {
+@keyframes rotate {
   0% {
-    transform: translateY(0);
+    transform: rotate(0);
   }
   100% {
-    transform: translateY(-10px);
-  }
-}
-@keyframes mover {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-10px);
+    transform: rotate(360deg);
   }
 }
