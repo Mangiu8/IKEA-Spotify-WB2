@@ -89,7 +89,7 @@ const createCard = (obj, cardType) => {
     cardBody.className = "card-body";
 
     const cardTitle = document.createElement("h6");
-    cardTitle.className = "card-title m-0";
+    cardTitle.className = "card-title m-0 max-h-40 overflow-hidden";
     cardTitle.textContent = obj.album.title;
 
     imgDiv.appendChild(img);
