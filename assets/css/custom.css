@@ -211,3 +211,7 @@ li {
   background: rgb(31, 31, 31);
   background: linear-gradient(185deg, rgba(31, 31, 31, 1) 0%, rgba(1, 1, 1, 1) 76%);
 }
+.bg-main {
+  background: rgb(31, 31, 31);
+  background: linear-gradient(185deg, rgba(31, 31, 31, 1) 0%, rgba(1, 1, 1, 1) 76%);
+}
