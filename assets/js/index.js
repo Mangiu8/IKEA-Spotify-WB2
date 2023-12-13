@@ -84,10 +84,10 @@ const createCard = (obj, cardType) => {
     const card = document.createElement("div");
     card.className = "col-2 pb-2";
     card.innerHTML = `
-    <div class="card">
+    <div class="card customCard">
     <div class="d-flex justify-content-center align-item-center position-relative">
-    <img src="${obj.album.cover}" class="card-img-top max-h-180 max-w-180 object-fit-cover rounded" alt="...">
-    <i class="bi bi-play-circle-fill position-absolute positionCustom fs-1 "></i>
+    <img src="${obj.album.cover}" class="card-img-top max-h-180 max-w-180 object-fit-cover mx-2 mt-2 rounded" alt="...">
+    <img src="./assets/imgs/play-fill.svg"  class="position-absolute positionCustom">
     </div>
     <div class="card-body fix-h-100 ">
       <h6 class="card-title overflowCustom max-h-50 fs-6"><a class="customColorA" href="./album.html?idAlbum=${obj.album.id}">${obj.album.title}</a></h6>
