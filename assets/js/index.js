@@ -91,7 +91,7 @@ const createCard = (obj, cardType) => {
     });
 
     const textDiv = document.createElement("div");
-    textDiv.className = "col bg-darkgray rounded";
+    textDiv.className = "col bg-darkgray rounded-end";
 
     const cardBody = document.createElement("div");
     cardBody.className = "card-body ";
