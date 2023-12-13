@@ -69,7 +69,7 @@ const createCard = (obj, cardType) => {
     card.className = "col-12 col-sm-6 col-lg-4";
 
     const innerDiv1 = document.createElement("div");
-    innerDiv1.className = "card mb-3 customCard";
+    innerDiv1.className = "card mb-3 customCard border-0";
 
     const innerDiv2 = document.createElement("div");
     innerDiv2.className = "row g-0";
@@ -125,7 +125,7 @@ const createCard = (obj, cardType) => {
     card.className = "col-6 col-sm-4 col-md-4 col-xxl-2 pb-2 ";
 
     const innerCard = document.createElement("div");
-    innerCard.className = "card customCard bg-darkgray";
+    innerCard.className = "card customCard bg-darkgray border-0";
 
     const dFlexContainer = document.createElement("div");
     dFlexContainer.className = "d-flex justify-content-center align-item-center position-relative";
