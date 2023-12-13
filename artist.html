@@ -12,7 +12,7 @@
   <body data-bs-theme="dark" class="overflow-hidden">
     <section class="container-fluid m-auto">
       <div class="row">
-        <div class="col-auto d-inline-block d-lg-none bg-black">
+        <div class="col-auto d-inline-block d-lg-none">
           <a
             class="btn btn-dark bg-transparent border-0 mt-3"
             data-bs-toggle="offcanvas"
@@ -108,13 +108,12 @@
         </div>
 
         <!-- -------------------------------------------------------- -->
-        <!-- -----------------MENU NOT CANVAS -------------------------->
+        <!-- -----------------MENU  -------------------------->
 
-        <div class="col-2 bg-black d-none d-lg-inline-block notCanvas">
-          <!--QUESTO IN JS DEVE DIVENTARE COL-1-->
+        <div class="col-2 bg-side d-none d-lg-inline-block notCanvas">
           <div class="container">
             <button
-              class="menuBtn btn button border-0 bg-black px-0 fs-3"
+              class="menuBtn btn button border-0 px-0 fs-3"
               type="button"
               data-bs-toggle="navTry"
               data-bs-target="#collapseNav"
@@ -195,7 +194,7 @@
           </div>
         </div>
 
-        <!-- -----------------------COL 7 CENTRALE--------------------------- -->
+        <!-- -----------------------MAIN--------------------------- -->
         <div class="col vh-100 overflow-y-auto">
           <div class="row">
             <!-- Background image -->
@@ -206,7 +205,7 @@
                   <div class="d-flex justify-content-between align-items-center mt-2 mb-2">
                     <div>
                       <button class="btn">
-                        <div class="rounded-circle secondary-light d-flex p-1">
+                        <div class="rounded-circle bg-dark-opacity d-flex p-2">
                           <svg
                             style="width: 20px"
                             data-encore-id="icon"
@@ -214,6 +213,7 @@
                             aria-hidden="true"
                             class="Svg-sc-ytk21e-0 kgVuXA IYDlXmBmmUKHveMzIPCF"
                             viewBox="0 0 16 16"
+                            fill="lightgray"
                           >
                             <path
                               d="M11.03.47a.75.75 0 0 1 0 1.06L4.56 8l6.47 6.47a.75.75 0 1 1-1.06 1.06L2.44 8 9.97.47a.75.75 0 0 1 1.06 0z"
@@ -222,7 +222,7 @@
                         </div>
                       </button>
                       <button class="btn">
-                        <div class="rounded-circle secondary-light d-flex p-1">
+                        <div class="rounded-circle bg-dark-opacity d-flex p-2">
                           <svg
                             style="width: 20px"
                             data-encore-id="icon"
@@ -230,6 +230,7 @@
                             aria-hidden="true"
                             class="Svg-sc-ytk21e-0 kgVuXA IYDlXmBmmUKHveMzIPCF"
                             viewBox="0 0 16 16"
+                            fill="lightgray"
                           >
                             <path
                               d="M4.97.47a.75.75 0 0 0 0 1.06L11.44 8l-6.47 6.47a.75.75 0 1 0 1.06 1.06L13.56 8 6.03.47a.75.75 0 0 0-1.06 0z"
@@ -239,7 +240,7 @@
                       </button>
                     </div>
                     <div>
-                      <select class="form-select rounded-pill" aria-label="Default select example">
+                      <select class="form-select bg-dark-opacity rounded-pill" aria-label="Default select example">
                         <option class="d-none" selected>Antonio Marucci</option>
                         <option value="1">Settings</option>
                         <option value="2">Friends</option>
@@ -265,7 +266,7 @@
               </div>
             </div>
           </div>
-          <div class="row gradient-spotify overflow-hidden">
+          <div class="row bg-main overflow-hidden">
             <div class="col-12">
               <div class="d-flex align-items-center gap-3 p-3 flex-wrap">
                 <button class="btn rounded">
@@ -439,9 +440,9 @@
           </div>
         </div>
 
-        <!-- -----------------AMICI NOT CANVAS ---------------------------------->
+        <!-- -----------------AMICI  ---------------------------------->
 
-        <div class="col-2 bg-black d-none d-lg-inline-block notCanvas">
+        <div class="col-2 bg-side d-none d-lg-inline-block notCanvas">
           <div class="container">
             <div class="row text-white align-items-center mt-3">
               <div class="col">
