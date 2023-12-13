@@ -66,7 +66,7 @@ const generateCardList = (arrayObj, container, cardType) => {
 const createCard = (obj, cardType) => {
   if (cardType == "small") {
     const card = document.createElement("div");
-    card.className = "col-4";
+    card.className = "col-12 col-sm-6 col-lg-4";
 
     const innerDiv1 = document.createElement("div");
     innerDiv1.className = "card mb-3 customCard";
@@ -122,7 +122,7 @@ const createCard = (obj, cardType) => {
     return card;
   } else if (cardType == "large") {
     const card = document.createElement("div");
-    card.className = "col-2 pb-2 ";
+    card.className = "col-6 col-sm-4 col-md-4 col-xxl-2 pb-2 ";
 
     const innerCard = document.createElement("div");
     innerCard.className = "card customCard bg-darkgray";
@@ -132,7 +132,7 @@ const createCard = (obj, cardType) => {
 
     const imgAlbumCover = document.createElement("img");
     imgAlbumCover.src = obj.album.cover;
-    imgAlbumCover.className = "card-img-top max-h-180 max-w-180 object-fit-cover mx-2 mt-2 rounded";
+    imgAlbumCover.className = "card-img-top max-h-180 object-fit-cover mx-2 mt-2 rounded";
     imgAlbumCover.alt = "...";
 
     const playImg = document.createElement("img");
