@@ -12,17 +12,6 @@
   <body data-bs-theme="dark" class="overflow-hidden">
     <main class="container-fluid mx-0">
       <div class="row">
-        <!-- <div class="col-auto d-inline-block d-lg-none bg-black">
-          <a
-            class="btn btn-dark bg-transparent border-0 mt-3"
-            data-bs-toggle="offcanvas"
-            href="#offcanvasExample"
-            role="button"
-            aria-controls="offcanvasExample"
-            ><i class="bi bi-three-dots-vertical"></i>
-          </a>
-        </div> -->
-
         <!-- --------------------MENU CANVAS ---------------------------->
 
         <div
@@ -480,17 +469,6 @@
             </div>
           </div>
         </div>
-
-        <!-- <div class="col-auto d-inline-block d-lg-none bg-black">
-          <a
-            class="btn btn-dark bg-transparent border-0 mt-3"
-            data-bs-toggle="offcanvas"
-            href="#offcanvas2"
-            role="button"
-            aria-controls="offcanvas2"
-            ><i class="bi bi-person"></i>
-          </a>
-        </div> -->
         <!-- -----------------FRIENDLIST CANVAS -------------------------->
         <div
           class="offcanvas offcanvas-end bg-black text-bg-danger d-lg-none"
@@ -672,15 +650,18 @@
     </main>
     <!-- FOOTER -->
     <footer>
+      <div id="audioContainer">
+        <audio id="audio" src=""></audio>
+      </div>
       <div class="fixed-bottom container-fluid px-0">
         <!-- navbar player - gruppo SX -->
         <div class="container-fluid d-md-block bg-main text-secondary pe-4" id="player">
           <div class="row fs-5 align-items-center">
             <div class="col d-none d-md-flex col-md-4 align-items-center justify-content-start text-start">
-              <img src="./assets/imgs/main/image-12.jpg" alt="" style="height: 40px" />
+              <img id="playerCover" src="./assets/imgs/main/image-12.jpg" alt="" style="height: 40px" />
               <div class="fs-6 px-3">
-                <a href="#"><p class="my-0 fw-bold text-white">Fat Funny Friend</p></a>
-                <a href="#"><p class="my-0">Maddie Zahm</p></a>
+                <a id="playerSongTitle" href="#"><p class="my-0 fw-bold text-white">Fat Funny Friend</p></a>
+                <a id="playerArtistName" href="#"><p class="my-0">Maddie Zahm</p></a>
               </div>
               <button type="button" class="btn text-secondary p-0">
                 <i class="bi bi-heart"></i>
@@ -693,20 +674,20 @@
                 <button type="button" class="btn text-secondary p-0">
                   <i class="bi bi-shuffle fs-4 me-2"></i>
                 </button>
-                <button type="button" class="btn text-secondary p-0">
+                <button id="prevButton" type="button" class="btn text-secondary p-0">
                   <i class="bi bi-skip-start-fill fs-4 me-2"></i>
                 </button>
                 <button id="playButton" type="button" class="btn text-secondary p-0">
-                  <i class="bi bi-play-circle-fill fs-1 me-2 text-white"></i>
+                  <i id="playPauseIcon" class="bi bi-play-circle-fill fs-2 me-2 text-white"></i>
                 </button>
-                <button type="button" class="btn text-secondary p-0">
+                <button id="nextButton" type="button" class="btn text-secondary p-0">
                   <i class="bi bi-skip-end-fill fs-4 me-2"></i>
                 </button>
                 <button type="button" class="btn text-secondary p-0">
                   <i class="bi bi-repeat fs-4"></i>
                 </button>
               </div>
-              <div class="w-100">
+              <div id="progressBarContainer" class="w-100">
                 <span class="fs-8">00:02</span>
                 <input id="progressBar" type="range" class="w-50" min="0" max="100" />
                 <span class="fs-8">03:42</span>

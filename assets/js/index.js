@@ -1,6 +1,8 @@
 import { apiKey } from "./apiKey.js";
 let arrayDiId = [81763, 420041687, 6364781, 69319552, 1238967, 521266992, 128938202, 401889417, 350417267, 508204251];
-// Funzione per ottenere la lista di playlist
+let playerPlaylist = [];
+let songIndex = -1;
+
 async function getPlaylists(value, container, cardType) {
   const apiUrl = "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + value;
 
@@ -19,8 +21,6 @@ async function getPlaylists(value, container, cardType) {
 
     const data = await response.json();
     generateCardList(data, container, cardType);
-
-    console.log("Lista di playlist:", data);
   } catch (error) {
     console.error("Si è verificato un errore:", error.message);
   }
@@ -28,6 +28,7 @@ async function getPlaylists(value, container, cardType) {
 let searchBarIsActive = false;
 window.addEventListener("DOMContentLoaded", () => {
   let timer;
+
   const searchBar = document.getElementById("searchBar");
   searchBar.addEventListener("input", () => {
     let valueSearched = searchBar.value;
@@ -45,10 +46,27 @@ window.addEventListener("DOMContentLoaded", () => {
   searchButton.addEventListener("click", () => {
     toggleSearchBar();
   });
+
+  const playButton = document.getElementById("playButton");
+  playButton.addEventListener("click", () => {
+    const audioContainer = document.getElementById("audioContainer");
+    if (audioContainer.classList.contains("play")) {
+      pauseSong();
+    } else {
+      playSong();
+    }
+  });
+
+  const prevButton = document.getElementById("prevButton");
+  prevButton.addEventListener("click", prevSong);
+
+  const nextButton = document.getElementById("nextButton");
+  nextButton.addEventListener("click", nextSong);
+
   checkSearchBarStatus();
 
-  let random = randomNumber();
-  heroFetch(random);
+  heroFetch(randomNumber());
+
   getPlaylists("power wolf", "buonPomeriggio", "small");
   getPlaylists("linkin park", "ascoltatiDiRecente", "large");
   getPlaylists("Saboton", "iTuoiMix", "large");
@@ -89,7 +107,8 @@ const createCard = (obj, cardType) => {
     playImg.className = "position-absolute positionCustom";
 
     playImg.addEventListener("click", () => {
-      refreshPlayer(obj);
+      loadSongs(obj);
+      playSong();
     });
 
     const textDiv = document.createElement("div");
@@ -182,23 +201,6 @@ const createCard = (obj, cardType) => {
   }
 };
 
-function refreshPlayer(obj) {
-  const audioPlayerContainer = document.getElementById("audioPlayer");
-  audioPlayerContainer.innerHTML = "";
-
-  const audioElement = document.createElement("audio");
-  audioElement.controls = true;
-  audioElement.autoplay = true;
-  audioElement.volume = 0.5;
-
-  const sourceElement = document.createElement("source");
-  sourceElement.src = obj.preview;
-  sourceElement.type = "audio/mpeg";
-
-  audioElement.appendChild(sourceElement);
-
-  audioPlayerContainer.appendChild(audioElement);
-}
 function toggleSearchBar() {
   const searchBar = document.getElementById("searchBar");
   searchBarIsActive = !searchBarIsActive;
@@ -261,3 +263,67 @@ const randomNumber = () => {
   number = Math.floor(Math.random() * arrayDiId.length);
   return arrayDiId[number];
 };
+/* console.log(playerPlaylist);
+function audioPlayer() {
+  const audioContainer = document.getElementById("audioContainer");
+  const progressBar = document.getElementById("progressBar");
+  const progressBarContainer = document.getElementById("progressBarContainer");
+} */
+function loadSongs(songObj) {
+  if (!playerPlaylist.includes(songObj)) {
+    playerPlaylist.push(songObj);
+    songIndex = playerPlaylist.length - 1;
+    console.log(songIndex);
+  } else {
+    songIndex = playerPlaylist.indexOf(songObj);
+  }
+  const songTitle = document.getElementById("playerSongTitle");
+  const artistName = document.getElementById("playerArtistName");
+  const playerCover = document.getElementById("playerCover");
+  const audio = document.getElementById("audio");
+  console.log(playerPlaylist);
+  songTitle.innerText = songObj.title;
+  artistName.innerText = songObj.artist.name;
+  playerCover.src = songObj.album.cover_small;
+  audio.src = songObj.preview;
+}
+function playSong() {
+  const audioContainer = document.getElementById("audioContainer");
+  const audio = document.getElementById("audio");
+  audioContainer.classList.add("play");
+
+  const playPauseButton = document.getElementById("playPauseIcon");
+  playPauseButton.classList.remove("bi-play-circle-fill");
+  playPauseButton.classList.add("bi-pause-circle-fill");
+
+  audio.play();
+}
+function pauseSong() {
+  const audioContainer = document.getElementById("audioContainer");
+  const audio = document.getElementById("audio");
+  audioContainer.classList.remove("play");
+
+  const playPauseButton = document.getElementById("playPauseIcon");
+  playPauseButton.classList.remove("bi-pause-circle-fill");
+  playPauseButton.classList.add("bi-play-circle-fill");
+
+  audio.pause();
+}
+function nextSong() {
+  songIndex++;
+  if (songIndex > playerPlaylist.length - 1) {
+    songIndex = 0;
+  }
+  console.log(songIndex);
+  loadSongs(playerPlaylist[songIndex]);
+  playSong();
+}
+function prevSong() {
+  songIndex--;
+  if (songIndex < 0) {
+    songIndex = playerPlaylist.length - 1;
+  }
+  console.log(songIndex);
+  loadSongs(playerPlaylist[songIndex]);
+  playSong();
+}
