@@ -423,12 +423,12 @@
             </div>
           </div>
           <!-- hero -->
-          <div class="container-fluid rounded text-white hero-bg">
+          <div id="trueHero" class="container-fluid rounded text-white hero-bg">
             <div class="row py-3">
               <!-- hero divisa in 3 parte 1: immagine -->
               <div class="col-auto">
                 <div class="container h-100 w-100 d-flex align-items-center">
-                  <img src="./assets/imgs/main/image-1.jpg" alt="album foto" class="overflow-hidden" id="albumImg" />
+                  <img src="" alt="album foto" class="overflow-hidden" id="albumImg" />
                 </div>
               </div>
 
@@ -437,10 +437,13 @@
               <div class="col">
                 <div class="container">
                   <h3 class="text-uppercase">album</h3>
-                  <h2 id="albumTitle">VIOLA (feat.Salmo)</h2>
-                  <p id="albumArtist">Fedez, Salmo</p>
-                  <p>Ascolta il nuovo singolo di <span id="textArtist">Fedez e Salmo</span></p>
-                  <div class="">
+                  <a class="text-white" id="paginaAlbum"><h2 id="albumTitle"></h2></a>
+                  <a class="text-white" id="paginaArtista2"><p id="albumArtist"></p></a>
+                  <p>
+                    Ascolta il nuovo album di
+                    <a class="text-white" id="paginaArtista"><span id="albumArtist2"></span></a>
+                  </p>
+                  <div>
                     <button class="btn fw-bold btn-success text-dark rounded-pill px-3 px-lg-4">Play</button
                     ><button class="btn fw-bold btn-dark border-1 border-white rounded-pill px-lg-4 mx-1 mx-lg-3">
                       Salva

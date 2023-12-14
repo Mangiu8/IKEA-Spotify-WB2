@@ -51,7 +51,8 @@ window.addEventListener("DOMContentLoaded", () => {
     toggleSearchBar();
     localStorage.setItem("setSearchbar", "false");
   }
-
+  let random = randomNumber();
+  heroFetch(random);
   getPlaylists("power wolf", "buonPomeriggio", "small");
   getPlaylists("linkin park", "ascoltatiDiRecente", "large");
   getPlaylists("Saboton", "iTuoiMix", "large");
@@ -106,7 +107,7 @@ const createCard = (obj, cardType) => {
 
     const titleLink = document.createElement("a");
     titleLink.href = `./album.html?idAlbum=${obj.album.id}`;
-    titleLink.className = "customColorA";
+    titleLink.className = "text-white";
     titleLink.textContent = obj.album.title;
 
     cardTitle.appendChild(titleLink);
@@ -158,7 +159,7 @@ const createCard = (obj, cardType) => {
 
     const titleLink = document.createElement("a");
     titleLink.href = `./album.html?idAlbum=${obj.album.id}`;
-    titleLink.className = "customColorA";
+    titleLink.className = "text-white";
     titleLink.textContent = obj.album.title;
 
     cardTitle.appendChild(titleLink);
@@ -212,3 +213,48 @@ function toggleSearchBar() {
     searchBar.classList.add("d-md-none");
   }
 }
+
+const heroFetch = async (random) => {
+  try {
+    const response = await fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + random, {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+        "X-RapidAPI-Key": apiKey,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Errore nella richiesta: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    console.log("Lista di playlist:", data);
+    showHero(data);
+  } catch (error) {
+    console.error("Si è verificato un errore:", error.message);
+  }
+};
+
+const showHero = (data) => {
+  const fotoHero = document.getElementById("albumImg");
+  const albumTitle = document.getElementById("albumTitle");
+  const artist = document.getElementById("albumArtist");
+  const artist2 = document.getElementById("albumArtist2");
+  const linkArtista = document.getElementById("paginaArtista");
+  const linkArtista2 = document.getElementById("paginaArtista2");
+  linkArtista2.href = `./artist.html?idArtist=${data.artist.name}&idAlbum=${data.id}`;
+  linkArtista.href = `./artist.html?idArtist=${data.artist.name}&idAlbum=${data.id}`;
+  const linkAlbum = document.getElementById("paginaAlbum");
+  linkAlbum.href = `./album.html?idAlbum=${data.id}`;
+  fotoHero.src = data.cover_medium;
+  albumTitle.innerText = data.title;
+  artist.innerText = data.artist.name;
+  artist2.innerText = data.artist.name;
+};
+let arrayDiId = [81763, 420041687, 6364781, 69319552, 1238967, 521266992, 128938202, 401889417, 350417267, 508204251];
+const randomNumber = () => {
+  let number;
+  number = Math.floor(Math.random() * arrayDiId.length);
+  return arrayDiId[number];
+};

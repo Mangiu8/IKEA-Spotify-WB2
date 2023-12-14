@@ -156,6 +156,9 @@ li {
   text-decoration: underline;
 }
 
+h6 a:hover {
+  text-decoration: underline;
+}
 /* PLAY BUTTON  */
 
 .positionCustom {
@@ -228,4 +231,7 @@ li {
 }
 .bg-dark-opacity:hover {
   background-color: rgba(41, 41, 41, 0.8);
+}
+#trueHero a:hover {
+  text-decoration: underline;
 }
