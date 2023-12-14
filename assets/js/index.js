@@ -28,7 +28,7 @@ async function getPlaylists(value, container, cardType) {
 let searchBarIsActive = false;
 window.addEventListener("DOMContentLoaded", () => {
   let timer;
-
+  document.getElementById("progressBar").value = 0;
   const searchBar = document.getElementById("searchBar");
   searchBar.addEventListener("input", () => {
     let valueSearched = searchBar.value;
@@ -62,6 +62,15 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const nextButton = document.getElementById("nextButton");
   nextButton.addEventListener("click", nextSong);
+
+  const audio = document.getElementById("audio");
+  audio.addEventListener("timeupdate", updateProgress);
+
+  const progressBar = document.getElementById("progressBar");
+  progressBar.addEventListener("input", setProgress);
+
+  const volumeBar = document.getElementById("volumeBar");
+  volumeBar.addEventListener("input", setVolume);
 
   checkSearchBarStatus();
 
@@ -160,7 +169,8 @@ const createCard = (obj, cardType) => {
     playImg.src = "./assets/imgs/play-fill.svg";
     playImg.className = "position-absolute positionCustom";
     playImg.addEventListener("click", () => {
-      refreshPlayer(obj);
+      loadSongs(obj);
+      playSong();
     });
 
     dFlexContainer.appendChild(imgAlbumCover);
@@ -263,12 +273,7 @@ const randomNumber = () => {
   number = Math.floor(Math.random() * arrayDiId.length);
   return arrayDiId[number];
 };
-/* console.log(playerPlaylist);
-function audioPlayer() {
-  const audioContainer = document.getElementById("audioContainer");
-  const progressBar = document.getElementById("progressBar");
-  const progressBarContainer = document.getElementById("progressBarContainer");
-} */
+
 function loadSongs(songObj) {
   if (!playerPlaylist.includes(songObj)) {
     playerPlaylist.push(songObj);
@@ -277,11 +282,21 @@ function loadSongs(songObj) {
   } else {
     songIndex = playerPlaylist.indexOf(songObj);
   }
+  setTimeout(() => {
+    const progressBar = document.getElementById("progressBar");
+    progressBar.value = 0;
+  }, 1);
+  setTimeout(() => {
+    const playerDuration = document.getElementById("playerDuration");
+    const audio = document.getElementById("audio");
+    playerDuration.innerText = audio.currentTime;
+  }, 1);
+
   const songTitle = document.getElementById("playerSongTitle");
   const artistName = document.getElementById("playerArtistName");
   const playerCover = document.getElementById("playerCover");
   const audio = document.getElementById("audio");
-  console.log(playerPlaylist);
+
   songTitle.innerText = songObj.title;
   artistName.innerText = songObj.artist.name;
   playerCover.src = songObj.album.cover_small;
@@ -310,6 +325,9 @@ function pauseSong() {
   audio.pause();
 }
 function nextSong() {
+  if (playerPlaylist.length == 0) {
+    return;
+  }
   songIndex++;
   if (songIndex > playerPlaylist.length - 1) {
     songIndex = 0;
@@ -319,6 +337,9 @@ function nextSong() {
   playSong();
 }
 function prevSong() {
+  if (playerPlaylist.length == 0) {
+    return;
+  }
   songIndex--;
   if (songIndex < 0) {
     songIndex = playerPlaylist.length - 1;
@@ -326,4 +347,32 @@ function prevSong() {
   console.log(songIndex);
   loadSongs(playerPlaylist[songIndex]);
   playSong();
+}
+function updateProgress(event) {
+  const progressBar = document.getElementById("progressBar");
+  let duration = event.currentTarget.duration;
+  let currentTime = event.currentTarget.currentTime;
+
+  const progressPercent = (currentTime / duration) * 100;
+  progressBar.value = progressPercent;
+  const playerCurrentTime = document.getElementById("playerCurrentTime");
+  const playerDuration = document.getElementById("playerDuration");
+  playerCurrentTime.innerHTML = Math.floor(currentTime);
+  playerDuration.innerHTML = Math.floor(duration);
+  if (progressBar.value == 100) {
+    setTimeout(() => {
+      pauseSong();
+    }, 200);
+  }
+}
+function setProgress(event) {
+  let audio = document.getElementById("audio");
+  let selectedTime = (event.currentTarget.value / 100) * audio.duration;
+  audio.currentTime = selectedTime;
+}
+function setVolume() {
+  const volumeBar = document.getElementById("volumeBar");
+  const audio = document.getElementById("audio");
+
+  audio.volume = volumeBar.value / 100;
 }

@@ -688,9 +688,9 @@
                 </button>
               </div>
               <div id="progressBarContainer" class="w-100">
-                <span class="fs-8"></span>
-                <input id="progressBar" type="range" class="w-50" min="0" max="100" />
-                <span class="fs-8"></span>
+                <span id="playerCurrentTime" class="fs-8"></span>
+                <input id="progressBar" type="range" class="w-75" min="0" max="100" value="0" />
+                <span id="playerDuration" class="fs-8"></span>
               </div>
             </div>
 
@@ -708,7 +708,7 @@
               <button type="button" class="btn text-secondary p-0">
                 <i class="bi bi-volume-up"></i>
               </button>
-              <input type="range" class="volume-slider" min="0" max="100" />
+              <input id="volumeBar" type="range" class="volume-slider" min="0" max="100" />
               <button type="button" class="btn text-secondary p-0">
                 <i class="bi bi-arrows-angle-expand"></i>
               </button>
