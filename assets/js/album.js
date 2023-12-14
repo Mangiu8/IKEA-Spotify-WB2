@@ -3,6 +3,7 @@ import { apiKey } from "./apiKey.js";
 const parameters = new URLSearchParams(window.location.search);
 const idAlbum = parameters.get("idAlbum");
 const apiUrl = "https://deezerdevs-deezer.p.rapidapi.com/album/" + idAlbum;
+let duration = 0;
 
 // Funzione per ottenere la lista di playlist
 async function getArtist() {
@@ -38,7 +39,9 @@ const showArtist = (data) => {
   titolo.innerText = data.title;
   descriptionArtist.innerHTML = `
   <img src="${data.artist.picture_small}" class="rounded-pill" width="30px">
-  <span class="h6">${data.artist.name} ° ${data.release_date} ° ${data.nb_tracks}, ${data.duration} minuti</span>`;
+  <span class="h6">${data.artist.name} ° ${data.release_date} ° ${data.nb_tracks} brani °  durata ${new Date(
+    duration * 1000
+  ).toLocaleString("it-IT", { hour: "2-digit", minute: "2-digit", second: "2-digit" })} </span>`;
 };
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -61,7 +64,9 @@ const generateCardList = (obj) => {
     let card = createCard(tracks[i], i + 1);
     cardContainer.appendChild(card);
     console.log(tracks[i]);
+    duration += tracks[i].duration;
   }
+  console.log(duration);
 };
 
 const createCard = (obj, index) => {
