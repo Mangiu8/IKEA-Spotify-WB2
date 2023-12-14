@@ -2,6 +2,7 @@ import { apiKey } from "./apiKey.js";
 let arrayDiId = [81763, 420041687, 6364781, 69319552, 1238967, 521266992, 128938202, 401889417, 350417267, 508204251];
 let playerPlaylist = [];
 let songIndex = -1;
+let isPlaying = false;
 
 async function getPlaylists(value, container, cardType) {
   const apiUrl = "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + value;
@@ -49,11 +50,13 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const playButton = document.getElementById("playButton");
   playButton.addEventListener("click", () => {
-    const audioContainer = document.getElementById("audioContainer");
-    if (audioContainer.classList.contains("play")) {
-      pauseSong();
-    } else {
-      playSong();
+    let audio = document.getElementById("audio");
+    if (playerPlaylist.length != 0) {
+      if (isPlaying) {
+        pauseSong();
+      } else {
+        playSong();
+      }
     }
   });
 
@@ -278,7 +281,7 @@ function loadSongs(songObj) {
   if (!playerPlaylist.includes(songObj)) {
     playerPlaylist.push(songObj);
     songIndex = playerPlaylist.length - 1;
-    console.log(songIndex);
+    console.log(playerPlaylist);
   } else {
     songIndex = playerPlaylist.indexOf(songObj);
   }
@@ -303,20 +306,24 @@ function loadSongs(songObj) {
   audio.src = songObj.preview;
 }
 function playSong() {
-  const audioContainer = document.getElementById("audioContainer");
-  const audio = document.getElementById("audio");
-  audioContainer.classList.add("play");
+  if (!isPlaying) {
+    isPlaying = !isPlaying;
+  }
 
+  const audio = document.getElementById("audio");
   const playPauseButton = document.getElementById("playPauseIcon");
+
   playPauseButton.classList.remove("bi-play-circle-fill");
   playPauseButton.classList.add("bi-pause-circle-fill");
 
   audio.play();
 }
 function pauseSong() {
-  const audioContainer = document.getElementById("audioContainer");
+  if (isPlaying) {
+    isPlaying = !isPlaying;
+  }
+
   const audio = document.getElementById("audio");
-  audioContainer.classList.remove("play");
 
   const playPauseButton = document.getElementById("playPauseIcon");
   playPauseButton.classList.remove("bi-pause-circle-fill");
