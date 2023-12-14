@@ -125,7 +125,7 @@ const createCard = (obj, index) => {
   col2Rank.className = "col-2 text-light";
 
   const rankParagraph = document.createElement("p");
-  rankParagraph.textContent = obj.rank;
+  rankParagraph.textContent = obj.rank.toLocaleString();
 
   col2Rank.appendChild(rankParagraph);
 
@@ -133,7 +133,10 @@ const createCard = (obj, index) => {
   col2Duration.className = "col-2 text-light";
 
   const durationParagraph = document.createElement("p");
-  durationParagraph.textContent = obj.duration;
+  durationParagraph.textContent = new Date(obj.duration * 1000).toLocaleString("it-IT", {
+    minute: "2-digit",
+    second: "2-digit",
+  });
 
   col2Duration.appendChild(durationParagraph);
 
