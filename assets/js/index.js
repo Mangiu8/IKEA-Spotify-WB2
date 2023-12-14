@@ -1,5 +1,5 @@
 import { apiKey } from "./apiKey.js";
-
+let arrayDiId = [81763, 420041687, 6364781, 69319552, 1238967, 521266992, 128938202, 401889417, 350417267, 508204251];
 // Funzione per ottenere la lista di playlist
 async function getPlaylists(value, container, cardType) {
   const apiUrl = "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + value;
@@ -27,7 +27,6 @@ async function getPlaylists(value, container, cardType) {
 }
 let searchBarIsActive = false;
 window.addEventListener("DOMContentLoaded", () => {
-  let searchBarContainer = document.getElementById("searchBarContainer");
   let timer;
   const searchBar = document.getElementById("searchBar");
   searchBar.addEventListener("input", () => {
@@ -46,11 +45,8 @@ window.addEventListener("DOMContentLoaded", () => {
   searchButton.addEventListener("click", () => {
     toggleSearchBar();
   });
-  const searchKey = localStorage.getItem("setSearchbar");
-  if (searchKey == "true") {
-    toggleSearchBar();
-    localStorage.setItem("setSearchbar", "false");
-  }
+  checkSearchBarStatus();
+
   let random = randomNumber();
   heroFetch(random);
   getPlaylists("power wolf", "buonPomeriggio", "small");
@@ -252,7 +248,14 @@ const showHero = (data) => {
   artist.innerText = data.artist.name;
   artist2.innerText = data.artist.name;
 };
-let arrayDiId = [81763, 420041687, 6364781, 69319552, 1238967, 521266992, 128938202, 401889417, 350417267, 508204251];
+function checkSearchBarStatus() {
+  const searchKey = localStorage.getItem("setSearchbar");
+  if (searchKey == "true") {
+    toggleSearchBar();
+    localStorage.setItem("setSearchbar", "false");
+  }
+}
+
 const randomNumber = () => {
   let number;
   number = Math.floor(Math.random() * arrayDiId.length);
