@@ -235,3 +235,9 @@ h6 a:hover {
 #trueHero a:hover {
   text-decoration: underline;
 }
+
+.backgroundAlbum:hover {
+  background-color: rgba(211, 211, 211, 0.356);
+  text-decoration: underline;
+  cursor: pointer;
+}

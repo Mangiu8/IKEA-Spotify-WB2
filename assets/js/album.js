@@ -72,7 +72,7 @@ const generateCardList = (obj) => {
 const createCard = (obj, index) => {
   console.log(obj);
   const card = document.createElement("div");
-  card.className = "row";
+  card.className = "row backgroundAlbum";
 
   const col8 = document.createElement("div");
   col8.className = "col text-light my-2";
