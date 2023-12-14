@@ -63,6 +63,13 @@ const showArtist = (data) => {
 };
 
 window.addEventListener("DOMContentLoaded", () => {
+  const allSearchIcons = document.querySelectorAll(".searchButtonMenu");
+  allSearchIcons.forEach((searchIcon) => {
+    searchIcon.addEventListener("click", () => {
+      localStorage.setItem("setSearchbar", "true");
+      window.location.assign("./index.html");
+    });
+  });
   getAlbum();
   getArtist();
 });

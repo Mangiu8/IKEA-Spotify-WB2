@@ -46,6 +46,11 @@ window.addEventListener("DOMContentLoaded", () => {
   searchButton.addEventListener("click", () => {
     toggleSearchBar();
   });
+  const searchKey = localStorage.getItem("setSearchbar");
+  if (searchKey == "true") {
+    toggleSearchBar();
+    localStorage.setItem("setSearchbar", "false");
+  }
 
   getPlaylists("power wolf", "buonPomeriggio", "small");
   getPlaylists("linkin park", "ascoltatiDiRecente", "large");
@@ -202,8 +207,8 @@ function toggleSearchBar() {
   searchBarIsActive = !searchBarIsActive;
 
   if (searchBarIsActive) {
-    searchBar.classList.remove("d-none");
+    searchBar.classList.remove("d-md-none");
   } else {
-    searchBar.classList.add("d-none");
+    searchBar.classList.add("d-md-none");
   }
 }
