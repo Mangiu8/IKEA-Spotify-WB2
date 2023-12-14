@@ -57,7 +57,7 @@ const showArtist = (data) => {
   const fans = document.getElementById("fans");
   console.log("cose");
   console.log(data);
-  fans.innerHTML = `Ascoltatori mensili ${data.fans}`;
+  fans.innerHTML = `Ascoltatori mensili ${data.fans.toLocaleString()}`;
   banner.style.backgroundImage = "url(" + data.artist.picture_xl + ")";
   titolo.innerText = data.artist.name;
 };
