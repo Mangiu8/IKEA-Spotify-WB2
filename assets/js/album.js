@@ -119,6 +119,7 @@ window.addEventListener("DOMContentLoaded", () => {
       mutedIcon.classList.add("text-danger");
     }
   });
+
   getArtist();
 });
 
