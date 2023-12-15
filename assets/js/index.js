@@ -4,6 +4,8 @@ let playerPlaylist = [];
 let songIndex = -1;
 let isPlaying = false;
 let isAutoplayActive = false;
+let lastVolume;
+let isMuted = false;
 
 async function getPlaylists(value, container, cardType) {
   const apiUrl = "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + value;
@@ -87,6 +89,24 @@ window.addEventListener("DOMContentLoaded", () => {
       isAutoplayActive = !isAutoplayActive;
       event.currentTarget.classList.remove("text-success");
       event.currentTarget.classList.add("text-secondary");
+    }
+  });
+
+  const playerMute = document.getElementById("playerMute");
+  playerMute.addEventListener("click", () => {
+    const audio = document.getElementById("audio");
+    const mutedIcon = document.getElementById("muteIcon");
+    if (isMuted) {
+      isMuted = !isMuted;
+      audio.volume = lastVolume;
+      mutedIcon.classList.remove("text-danger");
+      mutedIcon.classList.add("text-secondary");
+    } else {
+      isMuted = !isMuted;
+      lastVolume = audio.volume;
+      audio.volume = 0;
+      mutedIcon.classList.remove("text-secondary");
+      mutedIcon.classList.add("text-danger");
     }
   });
 
@@ -410,6 +430,10 @@ function setProgress(event) {
 function setVolume() {
   const volumeBar = document.getElementById("volumeBar");
   const audio = document.getElementById("audio");
-
+  const mutedIcon = document.getElementById("muteIcon");
+  isMuted = false;
   audio.volume = volumeBar.value / 100;
+  lastVolume = audio.volume;
+  mutedIcon.classList.remove("text-danger");
+  mutedIcon.classList.add("text-secondary");
 }
