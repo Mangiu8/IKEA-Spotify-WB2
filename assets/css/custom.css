@@ -244,8 +244,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 /* playerButton  */
 
 .zoom {
-  transition: transform 0.2s;
+  transition: transform 0.02s;
 }
 .zoom:hover {
-  transform: scale(1.4);
+  transform: scale(1.1);
 }
