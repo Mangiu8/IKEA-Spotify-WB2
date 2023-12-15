@@ -185,7 +185,7 @@ const createCard = (obj, cardType) => {
     cardBody.className = "card-body  fix-h-100";
 
     const cardTitle = document.createElement("h6");
-    cardTitle.className = "card-title overflowCustom max-h-60 fs-6";
+    cardTitle.className = "card-title overflowCustom max-h-5x fs-6";
 
     const titleLink = document.createElement("a");
     titleLink.href = `./album.html?idAlbum=${obj.album.id}`;
