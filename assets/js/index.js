@@ -29,7 +29,9 @@ async function getPlaylists(value, container, cardType) {
 let searchBarIsActive = false;
 window.addEventListener("DOMContentLoaded", () => {
   let timer;
+
   document.getElementById("progressBar").value = 0;
+
   const searchBar = document.getElementById("searchBar");
   searchBar.addEventListener("input", () => {
     let valueSearched = searchBar.value;
@@ -119,6 +121,7 @@ const createCard = (obj, cardType) => {
     playImg.className = "position-absolute positionCustom";
 
     playImg.addEventListener("click", () => {
+      console.log(obj);
       loadSongs(obj);
       playSong();
     });
@@ -225,7 +228,7 @@ function toggleSearchBar() {
   }
 }
 
-const heroFetch = async (random) => {
+async function heroFetch(random) {
   try {
     const response = await fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + random, {
       method: "GET",
@@ -245,7 +248,7 @@ const heroFetch = async (random) => {
   } catch (error) {
     console.error("Si è verificato un errore:", error.message);
   }
-};
+}
 
 const showHero = (data) => {
   const fotoHero = document.getElementById("albumImg");
@@ -262,6 +265,12 @@ const showHero = (data) => {
   albumTitle.innerText = data.title;
   artist.innerText = data.artist.name;
   artist2.innerText = data.artist.name;
+
+  const heroButton = document.getElementById("heroButton");
+  heroButton.addEventListener("click", () => {
+    loadSongs(data);
+    playSong();
+  });
 };
 function checkSearchBarStatus() {
   const searchKey = localStorage.getItem("setSearchbar");
@@ -294,16 +303,20 @@ function loadSongs(songObj) {
     const audio = document.getElementById("audio");
     playerDuration.innerText = audio.currentTime;
   }, 1);
-
+  console.log(songObj);
   const songTitle = document.getElementById("playerSongTitle");
   const artistName = document.getElementById("playerArtistName");
   const playerCover = document.getElementById("playerCover");
   const audio = document.getElementById("audio");
-
   songTitle.innerText = songObj.title;
   artistName.innerText = songObj.artist.name;
-  playerCover.src = songObj.album.cover_small;
-  audio.src = songObj.preview;
+  if (songObj.hasOwnProperty("album")) {
+    playerCover.src = songObj.album.cover_small;
+    audio.src = songObj.preview;
+  } else {
+    playerCover.src = songObj.cover_small;
+    audio.src = songObj.tracks.data[0].preview;
+  }
 }
 function playSong() {
   if (!isPlaying) {
