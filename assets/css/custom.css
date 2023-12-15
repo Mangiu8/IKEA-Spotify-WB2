@@ -4,7 +4,9 @@ body {
 a {
   text-decoration: none;
 }
-
+#progressBar {
+  width: 250px;
+}
 #albumAside p {
   line-height: 1;
   font-size: 0.8rem;
