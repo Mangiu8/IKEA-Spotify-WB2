@@ -49,6 +49,7 @@ const showArtist = (data) => {
   <span class="h6">${data.artist.name} ° ${data.release_date} ° ${data.nb_tracks} brani °  durata ${new Date(
     duration * 1000
   ).toLocaleString("it-IT", { hour: "2-digit", minute: "2-digit", second: "2-digit" })} </span>`;
+  pickColor(data);
 };
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -317,4 +318,38 @@ function setVolume() {
   lastVolume = audio.volume;
   mutedIcon.classList.remove("text-danger");
   mutedIcon.classList.add("text-secondary");
+}
+
+const pickColor = (data) => {
+  const colorThief = new ColorThief();
+
+  const imageUrl = data.cover_medium;
+
+  const img = new Image();
+  img.crossOrigin = "Anonymous";
+  img.addEventListener("load", async function () {
+    try {
+      const dominantColor = await colorThief.getColor(img);
+
+      console.log("Colore Dominante:", dominantColor);
+
+      createGradient(dominantColor);
+    } catch (error) {
+      console.error("Errore durante l'estrazione del colore:", error);
+    }
+  });
+
+  img.src = imageUrl;
+};
+
+function createGradient(dominantColor) {
+  const rgbaColor = `rgba(${dominantColor.join(", ")})`;
+
+  const gradient = document.getElementById("sfondoAlbum");
+  gradient.style.background = `linear-gradient(
+    180deg,
+    ${rgbaColor} 25%,
+    rgba(0, 0, 0, 1) 100%
+  )
+`;
 }

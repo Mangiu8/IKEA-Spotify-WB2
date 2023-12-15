@@ -205,7 +205,7 @@ h6 a:hover {
   background-size: cover;
   background-position: center;
 }
-#sfondoAlbum {
+/*#sfondoAlbum {
   background: #7f7fd5;
   background: -webkit-linear-gradient(to top, #91eae4, #86a8e7, #7f7fd5);
   background: linear-gradient(to top, #91eae4, #86a8e7, #7f7fd5);
@@ -222,7 +222,7 @@ h6 a:hover {
     rgba(13, 20, 16, 1) 45%,
     rgba(0, 0, 0, 1) 100%
   );
-}
+}*/
 .hero-bg {
   background: rgb(31, 31, 31);
   background: linear-gradient(185deg, rgba(31, 31, 31, 1) 0%, rgba(1, 1, 1, 1) 76%);
