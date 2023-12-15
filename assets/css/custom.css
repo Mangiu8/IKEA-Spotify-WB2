@@ -202,10 +202,8 @@ h6 a:hover {
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
-
   cursor: pointer;
   outline: none;
-
   overflow: hidden;
   border-radius: 16px;
 }
@@ -219,25 +217,17 @@ input[type="range"]::-webkit-slider-runnable-track {
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-
   height: 10px;
   width: 10px;
   background-color: rgb(229, 239, 229);
   border-radius: 50%;
   border: 2px solid rgb(229, 239, 229);
-
   box-shadow: -407px 0 0 400px rgb(229, 239, 229);
 }
-input[type="range"]::-webkit-slider-thumb:hover {
-  -webkit-appearance: none;
-  appearance: none;
 
-  height: 10px;
-  width: 10px;
+input[type="range"]:hover::-webkit-slider-thumb {
   background-color: green;
-  border-radius: 50%;
   border: 2px solid green;
-
   box-shadow: -407px 0 0 400px green;
 }
 
