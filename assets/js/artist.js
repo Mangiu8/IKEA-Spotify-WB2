@@ -6,6 +6,10 @@ const apiUrl = "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + nomeArtist
 const idAlbum = parameters.get("idAlbum");
 const apiUrlAlbum = "https://deezerdevs-deezer.p.rapidapi.com/album/" + idAlbum;
 
+let playerPlaylist = [];
+let songIndex = -1;
+let isPlaying = false;
+let firstTime = true;
 // Funzione per ottenere la lista di playlist
 async function getArtist() {
   try {
@@ -70,6 +74,34 @@ window.addEventListener("DOMContentLoaded", () => {
       window.location.assign("./index.html");
     });
   });
+  const playButton = document.getElementById("playButton");
+  playButton.addEventListener("click", () => {
+    if (firstTime) {
+      firstTime = false;
+      loadSongs(playerPlaylist[0]);
+      playSong();
+    } else {
+      if (isPlaying) {
+        pauseSong();
+      } else {
+        playSong();
+      }
+    }
+  });
+  const prevButton = document.getElementById("prevButton");
+  prevButton.addEventListener("click", prevSong);
+
+  const nextButton = document.getElementById("nextButton");
+  nextButton.addEventListener("click", nextSong);
+
+  const audio = document.getElementById("audio");
+  audio.addEventListener("timeupdate", updateProgress);
+
+  const progressBar = document.getElementById("progressBar");
+  progressBar.addEventListener("input", setProgress);
+
+  const volumeBar = document.getElementById("volumeBar");
+  volumeBar.addEventListener("input", setVolume);
   getAlbum();
   getArtist();
 });
@@ -82,6 +114,8 @@ const generateCardList = (obj) => {
   for (let i = 0; i < 7; i++) {
     let card = createCard(tracks[i], i + 1);
     cardContainer.appendChild(card);
+    playerPlaylist.push(tracks[i]);
+    console.log(playerPlaylist);
     console.log(tracks[i]);
   }
 };
@@ -90,6 +124,11 @@ const createCard = (obj, index) => {
   console.log(obj);
   const card = document.createElement("div");
   card.className = "row backgroundAlbum";
+  card.addEventListener("click", () => {
+    console.log(obj);
+    loadSongs(obj);
+    playSong();
+  });
 
   const col8 = document.createElement("div");
   col8.className = "col-8 text-light my-2";
@@ -146,3 +185,109 @@ const createCard = (obj, index) => {
 
   return card;
 };
+function loadSongs(songObj) {
+  if (!playerPlaylist.includes(songObj)) {
+    playerPlaylist.push(songObj);
+    songIndex = playerPlaylist.length - 1;
+    console.log(playerPlaylist);
+  } else {
+    songIndex = playerPlaylist.indexOf(songObj);
+  }
+  setTimeout(() => {
+    const progressBar = document.getElementById("progressBar");
+    progressBar.value = 0;
+  }, 1);
+  setTimeout(() => {
+    const playerDuration = document.getElementById("playerDuration");
+    const audio = document.getElementById("audio");
+    playerDuration.innerText = audio.currentTime;
+  }, 1);
+  console.log(songObj);
+  const songTitle = document.getElementById("playerSongTitle");
+  const artistName = document.getElementById("playerArtistName");
+  const playerCover = document.getElementById("playerCover");
+  const audio = document.getElementById("audio");
+  songTitle.innerText = songObj.title;
+  artistName.innerText = songObj.artist.name;
+
+  playerCover.src = songObj.album.cover_small;
+  audio.src = songObj.preview;
+}
+function playSong() {
+  if (!isPlaying) {
+    isPlaying = !isPlaying;
+  }
+
+  const audio = document.getElementById("audio");
+  const playPauseButton = document.getElementById("playPauseIcon");
+
+  playPauseButton.classList.remove("bi-play-circle-fill");
+  playPauseButton.classList.add("bi-pause-circle-fill");
+
+  audio.play();
+}
+function pauseSong() {
+  if (isPlaying) {
+    isPlaying = !isPlaying;
+  }
+
+  const audio = document.getElementById("audio");
+
+  const playPauseButton = document.getElementById("playPauseIcon");
+  playPauseButton.classList.remove("bi-pause-circle-fill");
+  playPauseButton.classList.add("bi-play-circle-fill");
+
+  audio.pause();
+}
+function nextSong() {
+  if (playerPlaylist.length == 0) {
+    return;
+  }
+  songIndex++;
+  if (songIndex > playerPlaylist.length - 1) {
+    songIndex = 0;
+  }
+  console.log(songIndex);
+  loadSongs(playerPlaylist[songIndex]);
+  playSong();
+}
+function prevSong() {
+  if (playerPlaylist.length == 0) {
+    return;
+  }
+  songIndex--;
+  if (songIndex < 0) {
+    songIndex = playerPlaylist.length - 1;
+  }
+  console.log(songIndex);
+  loadSongs(playerPlaylist[songIndex]);
+  playSong();
+}
+function updateProgress(event) {
+  const progressBar = document.getElementById("progressBar");
+  let duration = event.currentTarget.duration;
+  let currentTime = event.currentTarget.currentTime;
+
+  const progressPercent = (currentTime / duration) * 100;
+  progressBar.value = progressPercent;
+  const playerCurrentTime = document.getElementById("playerCurrentTime");
+  const playerDuration = document.getElementById("playerDuration");
+  playerCurrentTime.innerHTML = Math.floor(currentTime);
+  playerDuration.innerHTML = Math.floor(duration);
+  if (progressBar.value == 100) {
+    setTimeout(() => {
+      pauseSong();
+    }, 200);
+  }
+}
+function setProgress(event) {
+  let audio = document.getElementById("audio");
+  let selectedTime = (event.currentTarget.value / 100) * audio.duration;
+  audio.currentTime = selectedTime;
+}
+function setVolume() {
+  const volumeBar = document.getElementById("volumeBar");
+  const audio = document.getElementById("audio");
+
+  audio.volume = volumeBar.value / 100;
+}
