@@ -52,7 +52,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const playButton = document.getElementById("playButton");
   playButton.addEventListener("click", () => {
-    let audio = document.getElementById("audio");
     if (playerPlaylist.length != 0) {
       if (isPlaying) {
         pauseSong();

@@ -661,6 +661,78 @@
         </div>
       </div>
     </main>
+    <footer>
+      <div id="audioContainer">
+        <audio id="audio"></audio>
+      </div>
+      <div class="fixed-bottom container-fluid px-0">
+        <!-- navbar player - gruppo SX -->
+        <div class="container-fluid d-md-block bg-main text-secondary pe-4" id="player">
+          <div class="row fs-5 align-items-center">
+            <div class="col d-none d-md-flex col-md-4 align-items-center justify-content-start text-start">
+              <img id="playerCover" src="" alt="" style="height: 40px" />
+              <div class="fs-6 px-3">
+                <div>
+                  <a class="text-white" id="playerSongTitle" href="#"><p class="my-0 fw-bold text-white"></p></a>
+                </div>
+                <div>
+                  <a class="text-white" id="playerArtistName" href="#"><p class="my-0"></p></a>
+                </div>
+              </div>
+              <button type="button" class="btn text-secondary p-0">
+                <i class="bi bi-heart"></i>
+              </button>
+            </div>
+
+            <!-- navbar player - gruppo CENTER -->
+            <div class="col text-center px-0 d-flex flex-column justify-content-center align-items-center">
+              <div class="col-4 text-center px-0 d-flex justify-content-center align-items-center">
+                <button type="button" class="btn text-secondary p-0">
+                  <i class="bi bi-shuffle fs-4 me-2"></i>
+                </button>
+                <button id="prevButton" type="button" class="btn text-secondary p-0">
+                  <i class="bi bi-skip-start-fill fs-4 me-2"></i>
+                </button>
+                <button id="playButton" type="button" class="btn text-secondary p-0">
+                  <i id="playPauseIcon" class="bi bi-play-circle-fill fs-2 me-2 text-white"></i>
+                </button>
+                <button id="nextButton" type="button" class="btn text-secondary p-0">
+                  <i class="bi bi-skip-end-fill fs-4 me-2"></i>
+                </button>
+                <button type="button" class="btn text-secondary p-0">
+                  <i class="bi bi-repeat fs-4"></i>
+                </button>
+              </div>
+              <div id="progressBarContainer" class="w-100">
+                <span id="playerCurrentTime" class="fs-8"></span>
+                <input id="progressBar" type="range" class="w-75" min="0" max="100" value="0" />
+                <span id="playerDuration" class="fs-8"></span>
+              </div>
+            </div>
+
+            <!-- navbar player - gruppo DX -->
+            <div class="col d-none d-md-block col-md-4 text-end px-0 volume-slider-container">
+              <button type="button" class="btn text-secondary p-0">
+                <i class="bi bi-text-right"></i>
+              </button>
+              <button type="button" class="btn text-secondary p-0">
+                <i class="bi bi-list me-2"></i>
+              </button>
+              <button type="button" class="btn text-secondary p-0">
+                <i class="bi bi-speaker me-2"></i>
+              </button>
+              <button type="button" class="btn text-secondary p-0">
+                <i class="bi bi-volume-up"></i>
+              </button>
+              <input id="volumeBar" type="range" class="volume-slider" min="0" max="100" />
+              <button type="button" class="btn text-secondary p-0">
+                <i class="bi bi-arrows-angle-expand"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
