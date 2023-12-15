@@ -9,7 +9,7 @@ let playerPlaylist = [];
 let songIndex = -1;
 let isPlaying = false;
 let firstTime = true;
-
+let isAutoplayActive = false;
 // Funzione per ottenere la lista di playlist
 async function getArtist() {
   try {
@@ -85,6 +85,19 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const volumeBar = document.getElementById("volumeBar");
   volumeBar.addEventListener("input", setVolume);
+
+  const playerAutoplay = document.getElementById("playerAutoplay");
+  playerAutoplay.addEventListener("click", (event) => {
+    if (!isAutoplayActive) {
+      isAutoplayActive = !isAutoplayActive;
+      event.currentTarget.classList.remove("text-secondary");
+      event.currentTarget.classList.add("text-success");
+    } else {
+      isAutoplayActive = !isAutoplayActive;
+      event.currentTarget.classList.remove("text-success");
+      event.currentTarget.classList.add("text-secondary");
+    }
+  });
   getArtist();
 });
 
@@ -261,9 +274,13 @@ function updateProgress(event) {
   playerCurrentTime.innerHTML = Math.floor(currentTime);
   playerDuration.innerHTML = Math.floor(duration);
   if (progressBar.value == 100) {
-    setTimeout(() => {
-      pauseSong();
-    }, 200);
+    if (isAutoplayActive) {
+      nextSong();
+    } else {
+      setTimeout(() => {
+        pauseSong();
+      }, 200);
+    }
   }
 }
 function setProgress(event) {
